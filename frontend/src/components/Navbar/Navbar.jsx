@@ -8,7 +8,9 @@ const categories = [
   { name: 'Todos', path: 'todos' },
   { name: 'Utensilios de cocina', path: 'utensilios' },
   { name: 'Muebles', path: 'muebles' },
-  { name: 'juguetes', path: 'juguetes' }
+  { name: 'juguetes', path: 'juguetes' },
+  { name: 'Accesorios', path: 'accesorios' },
+  { name: 'Calzado', path: 'calzado' },
 ];
 
 const Navbar = () => {
@@ -21,7 +23,7 @@ const Navbar = () => {
 
   return (
     <>
-      <ul className={`${menuClicked ? 'hidden' : ''} z-50 absolute bg-primary text-white top-0 right-0 w-[256px] p-[24px] h-full text-[18px] sm:flex sm:items-center sm:w-[438px] sm:place-content-around sm:p-0 sm:h-auto sm:relative sm:text-[16px]`}>
+      <ul className={`${menuClicked ? 'hidden' : ''} z-50 absolute bg-primary text-white top-0 right-0 w-[256px] p-[24px] h-full text-[18px] sm:flex sm:items-center sm:w-[600px] sm:place-content-around sm:p-0 sm:h-auto sm:relative sm:text-[16px]`}>
       <Link href="/" legacyBehavior>
         <li className={`${menuClicked ? 'hidden' : ''} cursor-pointer sm:hidden  flex place-content-end`}>
           <Image className='w-8 h-8 mb-[87px]' src='/icons/icon-menu-close.svg' onClick={handleClick} alt="logo" width={32} height={32} />
