@@ -8,7 +8,7 @@ import Link from "next/link";
 const Header = () => {
   return (
     <container className=" flex flex-col w-full  text-white font-bold ">
-      <div className="w-full flex justify-between items-center gap-4 bg-primary md:px-10 md:py-6 cursor-pointer border-b-2 border-white">
+      <div className="w-full flex justify-between items-center gap-4 bg-primary md:px-10 md:py-6 cursor-pointer border-b-1 border-white">
       <Link href="/" legacyBehavior>
         <Image src="/icons/logo.svg" alt="logo" width={50} height={50} />
       </Link>
@@ -26,7 +26,7 @@ const Header = () => {
             />
         </div>
         </div>
-      <div className="w-full justify-between flex items-center gap-4 flex-row-reverse sm:flex-row">
+      <div className="bg-tertiary w-full justify-between flex items-center gap-4 flex-row-reverse sm:flex-row">
         <div className="flex w-full md:items-start rounded-full">
           <Navbar />
         </div>
