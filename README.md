@@ -39,4 +39,38 @@
 ## 🗺️ Colaboradores
 <p>Este proyecto ha sido posible gracias a la colaboración de diversas personas comprometidas con su desarrollo y mejora continua. Agradecemos sinceramente a todos aquellos que han contribuido con su tiempo, conocimientos y esfuerzo para hacer de EcoWood una realidad.
 
-Si deseas unirte como colaborador o explorar cómo puedes contribuir, no dudes en contactarnos. ¡Estamos entusiasmados de trabajar juntos para llevar este proyecto aún más lejos!</p>
+Si deseas unirte como colaborador o explorar cómo puedes contribuir, no dudes en contactarnos. ¡Estamos entusiasmados de trabajar juntos para llevar este proyecto aún más lejos! </p>
+
+<div align="center">
+	<img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTZncGFpYnJuenhpN3FlaGpsejhkMnBkcTBxdnlvZTZ4bnE0b3NodyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ae7SI3LoPYj8Q/giphy.webp"></img>
+</div>
+
+<div align="center">
+	
+#### 👾 Ainhoa
+<a target="_blank" href="https://www.linkedin.com/in/ainhoa-leon-arrieta/"><img src="https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=Linkedin&logoColor=white"></img></a>
+<a href="https://github.com/noaregui" target="_blank">
+	<img src="https://img.shields.io/badge/github-181717.svg?style=for-the-badge&logo=github&logoColor=white" alt="github" />
+</a>
+
+#### 🦾 María
+<a target="_blank" href="https://www.linkedin.com/in/thebusinesscat/"><img src="https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=Linkedin&logoColor=white"></img></a>
+<a href="https://github.com/Morgwens" target="_blank">
+	<img src="https://img.shields.io/badge/github-181717.svg?style=for-the-badge&logo=github&logoColor=white" alt="github" />
+</a>
+
+### 🎮 Pablo
+<a target="_blank" href="https://www.linkedin.com/in/guerre-pablo-agustin/"><img src="https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=Linkedin&logoColor=white"></img></a>
+<a href="https://github.com/Guerre-Pablo-Agustin" target="_blank">
+	<img src="https://img.shields.io/badge/github-181717.svg?style=for-the-badge&logo=github&logoColor=white" alt="github" />
+</a>
+
+
+### 🕹️ Alan
+<a target="_blank" href="https://www.linkedin.com/in/alan-favatier-a7a67825b/"><img src="https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=Linkedin&logoColor=white"></img></a>
+<a href="https://github.com/alanfavatier" target="_blank">
+	<img src="https://img.shields.io/badge/github-181717.svg?style=for-the-badge&logo=github&logoColor=white" alt="github" />
+</a>
+</div>
+
+
