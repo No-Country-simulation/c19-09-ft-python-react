@@ -12,7 +12,7 @@
 
 
 ## 🧮 Propósito
-<p>El propósito de EcoWood es conectar a los amantes de la madera con artesanos talentosos que crean productos únicos y sostenibles. De esta forma queremos
+<p>El propósito de EcoWood es conectar a los amantes de la madera con artesanos talentosos que crean productos únicos y sostenibles. De esta forma queremos:
 
 - Promover el uso de materiales naturales y técnicas artesanales.
 - Contribuir a un estilo de vida más ecológico y responsable.
