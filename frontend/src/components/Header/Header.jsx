@@ -26,7 +26,7 @@ const Header = () => {
             />
         </div>
         </div>
-      <div className="bg-tertiary w-full justify-between flex items-center gap-4 flex-row-reverse sm:flex-row">
+      <div className="bg-secondary w-full justify-between flex items-center gap-4 flex-row-reverse sm:flex-row">
         <div className="flex w-full md:items-start rounded-full">
           <Navbar />
         </div>

@@ -89,7 +89,7 @@ const Details = ({ params }) => {
             className="border border-gray-300 rounded p-2 text-center"
           />
         )}
-        <button type="button" className="flex flex-row gap-4 items-center justify-center w-80  sm:w-96 h-10 bg-primary text-white text-lg hover:bg-tertiary rounded-full duration-300 "><MdOutlineShoppingCart size={25} /> Agregar al carrito</button>
+        <button type="button" className="flex flex-row gap-4 items-center justify-center w-80  sm:w-96 h-10 bg-primary text-white text-lg hover:bg-tertyari rounded-full duration-300 "><MdOutlineShoppingCart size={25} /> Agregar al carrito</button>
       </div>
     </div>
 
