@@ -7,17 +7,12 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <container className=" flex items-center justify-between p-5 w-full bg-primary text-white font-bold ">
+    <container className=" flex flex-col w-full  text-white font-bold ">
+      <div className="w-full flex justify-between items-center gap-4 bg-primary md:px-10 md:py-6 cursor-pointer border-b-2 border-white">
       <Link href="/" legacyBehavior>
-      <div className="flex items-center gap-4 w-1/3 px-10 cursor-pointer">
         <Image src="/icons/logo.svg" alt="logo" width={50} height={50} />
-      </div>
       </Link>
-      <div className="w-2/3 justify-between flex items-center gap-4 flex-row-reverse sm:flex-row">
-        <div className="flex  md:items-start px-4 py-2 rounded-full">
-          <Navbar />
-        </div>
-        <div className="flex gap-4 items-end px-10">
+        <div className="flex gap-4 items-end  md:justify-between">
           <div className="flex gap-2 items-center">
           <MdOutlineShoppingCart className="w-8 h-8" />
           <p className="text-md">0</p>
@@ -28,7 +23,12 @@ const Header = () => {
             width={30}
             height={30}
             className="rounded-full"
-          />
+            />
+        </div>
+        </div>
+      <div className="w-full justify-between flex items-center gap-4 flex-row-reverse sm:flex-row">
+        <div className="flex w-full md:items-start rounded-full">
+          <Navbar />
         </div>
       </div>
     </container>
