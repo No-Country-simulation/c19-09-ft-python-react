@@ -11,9 +11,22 @@ import {
   faHome,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import { useAppSelector } from "@/redux/hooks";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const pathname = usePathname();
+
+  //conteo de los productos del carrito
+  //items del carrito
+  const cartItems = useAppSelector((state) => state.cartReducer.cartItems);
+
+  const [cartItemsCount, setCartItemsCount] = useState(0);
+
+  useEffect(() => {
+    const count = cartItems.reduce((total, item) => total + item.quantity, 0);
+    setCartItemsCount(count);
+  }, [cartItems]);
 
   const renderView = () => {
     return (
@@ -37,7 +50,8 @@ const Navbar = () => {
         <li className={pathname === "/Carrito" ? "underline" : ""}>
           <Link href="/Carrito" legacyBehavior>
             <a>
-              <FontAwesomeIcon icon={faShoppingCart} />
+              <FontAwesomeIcon icon={faShoppingCart} /> 
+              <span className="bg-red-500 text-white text-xs p-1 rounded-full">{cartItemsCount}</span>
             </a>
           </Link>
         </li>
