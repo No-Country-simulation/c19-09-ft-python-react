@@ -7,13 +7,25 @@ import { data } from "../../../../public/data";
 //iconos
 import { MdOutlineShoppingCart } from "react-icons/md";
 import ProductSlider from "../../../components/ProducSlider/ProductSlider";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { addItem } from "@/redux/features/cart";
 
 const Details = ({ params }) => {
+
+  //dispatch
+  const dispatch = useAppDispatch();
+
+  //estado del carrito
+  const cartItems = useAppSelector((state) => state.cartReducer.cartItems);
+
+  //traer el id del producto
   const { _id } = params;
   const productId = parseInt(_id);
   const productos = data.products;
   const product = productos.find((product) => product._id === productId);
 
+
+  //Manejar la imagen seleccionada y el hover
   const [selectedImage, setSelectedImage] = useState(product.image[0]);
   const [hoveredImage, setHoveredImage] = useState(null);
   const [quantity, setQuantity] = useState(1);
@@ -28,6 +40,34 @@ const Details = ({ params }) => {
   if (!product) {
     return <div>Producto no encontrado</div>;
   }
+
+  //agregar productos al carrito
+  const handleAddToCart = () => {
+    if (quantity >= 1) {
+
+      const productData = {
+        _id: product._id,
+        title: product.title,
+        price: product.price,
+        quantity: quantity,
+        subtotal: product.price * quantity,
+      };
+
+      const existingItem = cartItems.find(item => item._id === product._id);
+
+
+      if (existingItem && existingItem.quantity + quantity > existingItem.stock) {
+        console.log("No hay suficiente stock disponible para agregar más unidades de este producto al carrito.");
+      } else {
+        dispatch(addItem(productData));
+        console.log("Producto agregado al carrito." , productData);
+      }
+    } else {
+      console.log("La cantidad debe ser mayor a 0");
+    }
+  };
+
+
 
   return (
     <>
@@ -89,7 +129,7 @@ const Details = ({ params }) => {
             className="border border-gray-300 rounded p-2 text-center"
           />
         )}
-        <button type="button" className="flex flex-row gap-4 items-center justify-center w-80  sm:w-96 h-10 bg-primary text-white text-lg hover:bg-tertyari rounded-full duration-300 "><MdOutlineShoppingCart size={25} /> Agregar al carrito</button>
+        <button onClick={handleAddToCart} type="button" className="flex flex-row gap-4 items-center justify-center w-80  sm:w-96 h-10 bg-secondary text-white text-lg hover:bg-tertyari rounded-full duration-300 "><MdOutlineShoppingCart size={25} /> Agregar al carrito</button>
       </div>
     </div>
 
