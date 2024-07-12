@@ -390,5 +390,7 @@ export const data = {
             size: "Mediana",
             finish: "Natural",
         },
-    ]
+    ],
+
+    categories: ["todos", "utensilios", "muebles", "juguetes", "accesorios", "calzado"]
 };
