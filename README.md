@@ -59,14 +59,14 @@ Si deseas unirte como colaborador o explorar cómo puedes contribuir, no dudes e
 	<img src="https://img.shields.io/badge/github-181717.svg?style=for-the-badge&logo=github&logoColor=white" alt="github" />
 </a>
 
-### 🎮 Pablo
+#### 🎮 Pablo
 <a target="_blank" href="https://www.linkedin.com/in/guerre-pablo-agustin/"><img src="https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=Linkedin&logoColor=white"></img></a>
 <a href="https://github.com/Guerre-Pablo-Agustin" target="_blank">
 	<img src="https://img.shields.io/badge/github-181717.svg?style=for-the-badge&logo=github&logoColor=white" alt="github" />
 </a>
 
 
-### 🕹️ Alan
+#### 🕹️ Alan
 <a target="_blank" href="https://www.linkedin.com/in/alan-favatier-a7a67825b/"><img src="https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=Linkedin&logoColor=white"></img></a>
 <a href="https://github.com/alanfavatier" target="_blank">
 	<img src="https://img.shields.io/badge/github-181717.svg?style=for-the-badge&logo=github&logoColor=white" alt="github" />
