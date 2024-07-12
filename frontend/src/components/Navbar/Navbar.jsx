@@ -1,45 +1,162 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSearch,
+  faUser,
+  faShoppingCart,
+  faHome,
+} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { useState } from 'react'
-
-const categories = [
-  { name: 'Todos', path: 'todos' },
-  { name: 'Utensilios de cocina', path: 'utensilios' },
-  { name: 'Muebles', path: 'muebles' },
-  { name: 'juguetes', path: 'juguetes' },
-  { name: 'Accesorios', path: 'accesorios' },
-  { name: 'Calzados', path: 'calzado' },
-];
 
 const Navbar = () => {
+  const pathname = usePathname();
 
-  const [menuClicked, setMenuClicked] = useState(true)
+  const renderView = () => {
+    return (
+      <>
+        <li className={pathname === "/my-orders" ? "underline" : ""}>
+          <Link href="/my-orders">
+            <p>My Orders</p>
+          </Link>
+        </li>
+        <li className={pathname === "/my-account" ? "underline" : ""}>
+          <Link href="/my-account">
+            <p>My Account</p>
+          </Link>
+        </li>
+        <li className={pathname === "/sign-out" ? "underline" : ""}>
+          <Link href="/sign-out">
+            <p>Sign out</p>
+          </Link>
+        </li>
 
-  const handleClick = () => {
-    setMenuClicked(prevState => !prevState)
-  }
+        <li className={pathname === "/Carrito" ? "underline" : ""}>
+          <Link href="/Carrito" legacyBehavior>
+            <a>
+              <FontAwesomeIcon icon={faShoppingCart} />
+            </a>
+          </Link>
+        </li>
+      </>
+    );
+  };
 
   return (
-    <>
-      <ul className={`${menuClicked ? 'hidden' : ''} z-50 absolute  text-primary  top-0 right-0 w-[256px]  p-[24px] h-full text-[18px] sm:flex sm:items-center sm:w-full  sm:justify-between md:px-10 md:py-6 sm:p-0 sm:h-auto sm:relative sm:text-[16px]`}>
-      <Link href="/" legacyBehavior>
-        <li className={`${menuClicked ? 'hidden' : ''} cursor-pointer sm:hidden  flex place-content-end`}>
-          <Image className='w-8 h-8 mb-[87px]' src='/icons/icon-menu-close.svg' onClick={handleClick} alt="logo" width={32} height={32} />
+    <nav className="flex justify-evenly items-center fixed z-10 top-0 w-full py-8 px-10 text-sm font-light bg-primary text-tertiary">
+      <ul className="flex items-center gap-7">
+        <li
+          className={`font-semibold text-lg ${
+            pathname === "/" ? "underline" : ""
+          }`}
+        >
+          <Link href="/" legacyBehavior>
+            <a className="text-tertiary">
+              <FontAwesomeIcon icon={faHome} />
+            </a>
+          </Link>
         </li>
-        </Link>
-        {categories.map((category) => (
-          <li key={category.path} className='mb-8 sm:mb-0'>
-            <Link legacyBehavior  href={`/Products/${category.path}` }>
-              <a className='hover:border-b-2 border-white'>{category.name}</a>
-            </Link>
-          </li>
-        ))}
+        <li className={pathname === "/Muebles" ? "underline" : ""}>
+          <Link href="/Muebles">
+            <p>Muebles</p>
+          </Link>
+        </li>
+        <li className={pathname === "/Decoración" ? "underline" : ""}>
+          <Link href="/Decoración">
+            <p>Decoración</p>
+          </Link>
+        </li>
+        <li className={pathname === "/Utensilios" ? "underline" : ""}>
+          <Link href="/Utensilios">
+            <p>Utensilios</p>
+          </Link>
+        </li>
+        <li className={pathname === "/Juguetesyjuegos" ? "underline" : ""}>
+          <Link href="/Juguetesyjuegos">
+            <p>Juguetes y Juegos</p>
+          </Link>
+        </li>
+        <li className={pathname === "/Otros" ? "underline" : ""}>
+          <Link href="/Otros">
+            <p>Otros</p>
+          </Link>
+        </li>
       </ul>
-      <Image className={`${menuClicked ? '' : 'hidden'} w-10 h-4 cursor-pointer sm:hidden`} src='/icons/icon-menu.svg' onClick={handleClick} alt="" width={100} height={100}/>
-    </>
-  )
-}
+      <div className="flex items-center">
+        <input
+          type="text"
+          placeholder="¿Qué estás buscando?"
+          className="w-full border border-secondary px-4 py-2 rounded-lg bg-primary text-tertiary placeholder-tertiary focus:outline-none"
+        />
+        <button
+          type="button"
+          className="ml-2 px-3 py-2 bg-transparent border border-secondary rounded-lg text-tertiary hover:bg-secondary hover:text-primary focus:outline-none"
+        >
+          <FontAwesomeIcon icon={faSearch} />
+        </button>
+      </div>
 
-export default Navbar
+      <ul className="flex items-center gap-3">{renderView()}</ul>
+    </nav>
+  );
+};
+
+export default Navbar;
+
+/*  return (
+    <>
+      <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-primary text-tertiary">
+    
+        <div className="hidden sm:flex justify-start">
+          <Link href="/" legacyBehavior>
+            <a className="text-tertiary">
+              <FontAwesomeIcon icon={faHome} />
+            </a>
+          </Link>
+        </div>
+
+
+        <div className="flex items-center">
+          <input
+            type="text"
+            placeholder="¿Qué estás buscando?"
+            className="w-full border border-secondary px-4 py-2 rounded-lg bg-primary text-tertiary placeholder-tertiary focus:outline-none"
+          />
+          <button
+            type="button"
+            className="ml-2 px-3 py-2 bg-transparent border border-secondary rounded-lg text-tertiary hover:bg-secondary hover:text-primary focus:outline-none"
+          >
+            <FontAwesomeIcon icon={faSearch} />
+          </button>
+        </div>
+
+
+        <div className="hidden sm:flex items-center gap-3">
+          <Link href="/Sign-in" legacyBehavior>
+            <a className={activeStyle}>
+              <FontAwesomeIcon icon={faUser} />
+            </a>
+          </Link>
+   
+
+          <Link href="/Carrito" legacyBehavior>
+            <a className={activeStyle}>
+              <FontAwesomeIcon icon={faShoppingCart} />
+            </a>
+          </Link>
+          <Link href="/Carrito" legacyBehavior>
+            <a className={activeStyle}>
+              <FontAwesomeIcon icon={faShoppingCart} />
+            </a>
+          </Link>
+        </div>
+      </nav>
+    </>
+  );
+};
+
+export default Navbar;
+ */
