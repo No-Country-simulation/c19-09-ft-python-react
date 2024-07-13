@@ -28,30 +28,39 @@ const Navbar = () => {
     setCartItemsCount(count);
   }, [cartItems]);
 
+  const categories = [
+    { name: "Todos", path: "todos" },
+    { name: "Utensilios de cocina", path: "utensilios" },
+    { name: "Muebles", path: "muebles" },
+    { name: "Juguetes", path: "juguetes" },
+  ];
+
   const renderView = () => {
     return (
       <>
-        <li className={pathname === "/my-orders" ? "underline" : ""}>
-          <Link href="/my-orders">
+        <li className={pathname === "/My-orders" ? "underline" : ""}>
+          <Link href="/My-orders">
             <p>My Orders</p>
           </Link>
         </li>
-        <li className={pathname === "/my-account" ? "underline" : ""}>
-          <Link href="/my-account">
+        <li className={pathname === "/My-account" ? "underline" : ""}>
+          <Link href="/My-account">
             <p>My Account</p>
           </Link>
         </li>
-        <li className={pathname === "/sign-out" ? "underline" : ""}>
-          <Link href="/sign-out">
-            <p>Sign out</p>
+        <li className={pathname === "/Sign-in" ? "underline" : ""}>
+          <Link href="/Sign-in">
+            <p>Sign in</p>
           </Link>
         </li>
 
         <li className={pathname === "/Carrito" ? "underline" : ""}>
           <Link href="/Carrito" legacyBehavior>
             <a>
-              <FontAwesomeIcon icon={faShoppingCart} /> 
-              <span className="bg-red-500 text-white text-xs p-1 rounded-full">{cartItemsCount}</span>
+              <FontAwesomeIcon icon={faShoppingCart} />
+              <span className="bg-red-500 text-white text-xs p-1 rounded-full">
+                {cartItemsCount}
+              </span>
             </a>
           </Link>
         </li>
@@ -60,7 +69,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-evenly items-center fixed z-10 top-0 w-full py-8 px-10 text-sm font-light bg-primary text-tertiary">
+    <nav
+      className="flex justify-between
+     items-center fixed z-10 top-0 w-full py-8 px-10 text-sm font-light bg-primary text-tertiary"
+    >
       <ul className="flex items-center gap-7">
         <li
           className={`font-semibold text-lg ${
@@ -73,45 +85,19 @@ const Navbar = () => {
             </a>
           </Link>
         </li>
-        <li className={pathname === "/Muebles" ? "underline" : ""}>
-          <Link href="/Muebles">
-            <p>Muebles</p>
-          </Link>
-        </li>
-        <li className={pathname === "/Decoración" ? "underline" : ""}>
-          <Link href="/Decoración">
-            <p>Decoración</p>
-          </Link>
-        </li>
-        <li className={pathname === "/Utensilios" ? "underline" : ""}>
-          <Link href="/Utensilios">
-            <p>Utensilios</p>
-          </Link>
-        </li>
-        <li className={pathname === "/Juguetesyjuegos" ? "underline" : ""}>
-          <Link href="/Juguetesyjuegos">
-            <p>Juguetes y Juegos</p>
-          </Link>
-        </li>
-        <li className={pathname === "/Otros" ? "underline" : ""}>
-          <Link href="/Otros">
-            <p>Otros</p>
-          </Link>
-        </li>
+        {categories.map((category) => (
+          <li
+            key={category.path}
+            className={
+              pathname === `/Products/${category.path}` ? "underline" : ""
+            }
+          >
+            <Link legacyBehavior href={`/Products/${category.path}`}>
+              <a className="hover:border-b-2 border-white">{category.name}</a>
+            </Link>
+          </li>
+        ))}
       </ul>
-      <div className="flex items-center">
-        <input
-          type="text"
-          placeholder="¿Qué estás buscando?"
-          className="w-full border border-secondary px-4 py-2 rounded-lg bg-primary text-tertiary placeholder-tertiary focus:outline-none"
-        />
-        <button
-          type="button"
-          className="ml-2 px-3 py-2 bg-transparent border border-secondary rounded-lg text-tertiary hover:bg-secondary hover:text-primary focus:outline-none"
-        >
-          <FontAwesomeIcon icon={faSearch} />
-        </button>
-      </div>
 
       <ul className="flex items-center gap-3">{renderView()}</ul>
     </nav>
@@ -119,58 +105,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-/*  return (
-    <>
-      <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-primary text-tertiary">
-    
-        <div className="hidden sm:flex justify-start">
-          <Link href="/" legacyBehavior>
-            <a className="text-tertiary">
-              <FontAwesomeIcon icon={faHome} />
-            </a>
-          </Link>
-        </div>
-
-
-        <div className="flex items-center">
-          <input
-            type="text"
-            placeholder="¿Qué estás buscando?"
-            className="w-full border border-secondary px-4 py-2 rounded-lg bg-primary text-tertiary placeholder-tertiary focus:outline-none"
-          />
-          <button
-            type="button"
-            className="ml-2 px-3 py-2 bg-transparent border border-secondary rounded-lg text-tertiary hover:bg-secondary hover:text-primary focus:outline-none"
-          >
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
-        </div>
-
-
-        <div className="hidden sm:flex items-center gap-3">
-          <Link href="/Sign-in" legacyBehavior>
-            <a className={activeStyle}>
-              <FontAwesomeIcon icon={faUser} />
-            </a>
-          </Link>
-   
-
-          <Link href="/Carrito" legacyBehavior>
-            <a className={activeStyle}>
-              <FontAwesomeIcon icon={faShoppingCart} />
-            </a>
-          </Link>
-          <Link href="/Carrito" legacyBehavior>
-            <a className={activeStyle}>
-              <FontAwesomeIcon icon={faShoppingCart} />
-            </a>
-          </Link>
-        </div>
-      </nav>
-    </>
-  );
-};
-
-export default Navbar;
- */

@@ -8,6 +8,13 @@ import {
 
 import { validateRegisterForm, validateLoginForm } from "./formValidation";
 
+//redux
+import { useCreateUserMutation } from "@/redux/services/usersApi";
+import { useLoginUserMutation } from "@/redux/services/usersApi";
+import { loginUser } from "@/redux/features/userSlice";
+import { useDispatch } from "react-redux";
+import { signIn } from "next-auth/react";
+
 //iconos
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaGoogle } from "react-icons/fa";
@@ -18,10 +25,18 @@ const userIcon = <FontAwesomeIcon icon={faUser} />;
 const lockIcon = <FontAwesomeIcon icon={faLock} />;
 
 const Register = () => {
+  /*   const [authenticated, setAuthenticated] = useState(false); */
+
+  const dispatch = useDispatch();
+  //estado para la creacion de usuarios
+  const [newUser] = useCreateUserMutation();
+  //estado para el login
+  const [login] = useLoginUserMutation();
+  //estado para las validaciones
   const [formErrors, setFormErrors] = useState({});
 
-  const [showRegisterForm, setShowRegisterForm] = useState(true);
-  const [showLoginForm, setShowLoginForm] = useState(false);
+  const [showRegisterForm, setShowRegisterForm] = useState(false);
+  const [showLoginForm, setShowLoginForm] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   //estado para mensaje de bienvenida Registro
   const [welcomeMessage, setWelcomeMessage] = useState("");
@@ -308,7 +323,7 @@ const Register = () => {
               <div className="mt-6">
                 <button
                   type="submit"
-                  className="transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 w-full bg-tertiary text-primary rounded px-4 py-2 hover:bg-secondary focus:outline-none"
+                  className="transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 w-full bg-teal-500 text-white rounded px-4 py-2 hover:bg-red-600 focus:outline-none"
                 >
                   Registrarse
                 </button>
@@ -395,7 +410,7 @@ const Register = () => {
               <div className="mt-6">
                 <button
                   type="submit"
-                  className=" transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 w-full bg-tertiary text-primary rounded px-4 py-2 hover:bg-secondary focus:outline-none"
+                  className=" transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 w-full bg-teal-500 text-white rounded px-4 py-2 hover:bg-red-600 focus:outline-none"
                 >
                   Ingresar
                 </button>
@@ -404,7 +419,7 @@ const Register = () => {
                   onClick={async () => {
                     signIn("google");
                   }}
-                  className=" transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 flex items-center justify-center w-full h-8 bg-red-500 hover:bg-secondary text-white px-4 py-2 rounded focus:outline-none focus:border-teal-300 duration-200 mt-2"
+                  className=" transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 flex items-center justify-center w-full h-8 bg-red-500 hover:bg-red-800 text-white px-4 py-2 rounded focus:outline-none focus:border-teal-300 duration-200 mt-2"
                 >
                   <FaGoogle className="mr-2" />
                   Accede con Google
@@ -417,7 +432,7 @@ const Register = () => {
                 ¿No tienes cuenta?{" "}
               </h1>
               <button
-                className="transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 bg-secondary text-white rounded px-4 py-2 hover:bg-tertiary focus:outline-none"
+                className="transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 bg-teal-800 text-white rounded px-4 py-2 hover:bg-red-800 focus:outline-none"
                 onClick={showRegisterFormView}
               >
                 Regístrate

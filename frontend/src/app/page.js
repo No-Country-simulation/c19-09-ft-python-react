@@ -4,6 +4,7 @@ import ProductSlider from "../components/ProducSlider/ProductSlider";
 import Link from "next/link";
 import Banner from "@/components/Banner/Banner";
 import Footer from "@/components/Footer";
+import Buscador from "@/components/Buscador/Buscador";
 
 export default function Home() {
   const sections = [
@@ -16,11 +17,12 @@ export default function Home() {
   return (
     <>
       <Banner />
+      <Buscador />
       <main className="">
         <div className="px-10 md:px-4 mt-20">
           {sections.map((section, index) => (
             <div key={index} className="mb-20  md:px-10">
-              <div className="flex justify-center items-center">
+              <div className="flex justify-evenly ">
                 <h2 className="text-3xl font-bold mb-6 flex  ">
                   {section.title}
                 </h2>
