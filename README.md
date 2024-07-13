@@ -71,6 +71,13 @@ Si deseas unirte como colaborador o explorar cómo puedes contribuir, no dudes e
 <a href="https://github.com/alanfavatier" target="_blank">
 	<img src="https://img.shields.io/badge/github-181717.svg?style=for-the-badge&logo=github&logoColor=white" alt="github" />
 </a>
+
+#### 🎯 Yeisy
+<a target="_blank" href="https://www.linkedin.com/in/yeisy-paname%C3%B1o-00b5541a3/"><img src="https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=Linkedin&logoColor=white"></img></a>
+<a href="https://github.com/Jeisyp1" target="_blank">
+	<img src="https://img.shields.io/badge/github-181717.svg?style=for-the-badge&logo=github&logoColor=white" alt="github" />
+</a>
+
 </div>
 
 
