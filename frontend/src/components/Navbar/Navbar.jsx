@@ -20,13 +20,14 @@ const Navbar = () => {
   //conteo de los productos del carrito
   //items del carrito
   const cartItems = useAppSelector((state) => state.cartReducer.cartItems);
-
   const [cartItemsCount, setCartItemsCount] = useState(0);
 
   useEffect(() => {
     const count = cartItems.reduce((total, item) => total + item.quantity, 0);
-    setCartItemsCount(count);
-  }, [cartItems]);
+    if (count !== cartItemsCount) {
+      setCartItemsCount(count);
+    }
+  }, [cartItems, cartItemsCount]);
 
   const categories = [
     { name: "Todos", path: "todos" },
