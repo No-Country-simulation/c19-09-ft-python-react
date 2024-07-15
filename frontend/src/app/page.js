@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Header from "../components/Header/Header";
 import ProductSlider from "../components/ProducSlider/ProductSlider";
@@ -5,14 +6,29 @@ import Link from "next/link";
 import Banner from "@/components/Banner/Banner";
 import Footer from "@/components/Footer";
 import Buscador from "@/components/Buscador/Buscador";
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "@/redux/hooks";
+import { useEffect } from "react";
+import { getCartData } from "@/redux/features/cart";
 
 export default function Home() {
+
+  const dispatch = useDispatch();
+  const cartItems = useAppSelector((state) => state.cartReducer.cartItems);
+
+  useEffect(() => {
+    dispatch(getCartData());
+  }, [dispatch]);
+
+
+
   const sections = [
     { title: "Mas vendidos", topRated: true },
     { title: "Muebles", category: "muebles" },
     { title: "Utensilios de cocina", category: "utensilios" },
     { title: "Juguetes", category: "juguetes" },
   ];
+
 
   return (
     <>
