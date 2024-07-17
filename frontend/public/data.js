@@ -543,11 +543,56 @@ export const data = {
   ],
 
   categories: [
-    "todos",
     "utensilios",
     "muebles",
     "juguetes",
-    "accesorios",
-    "calzado",
+    "accesorios"
   ],
+
+  users:[
+    {
+      _id: 1,
+      name: "John Doe",
+      email: "john.doe@example.com",
+      password: "password123",
+      role: "vendedor",
+      address: {
+        street: "123 Main St",
+        city: "New York",
+        state: "NY",
+        zip: "10001"
+      },
+      orders: [1, 2, 3]
+    },
+    {
+      _id: 2,
+      name: "Jane Smith",
+      email: "jane.smith@example.com",
+      password: "secret123",
+      role: "user",
+      address: {
+        street: "456 Elm St",
+        city: "Los Angeles",
+        state: "CA",
+        zip: "90001"
+      },
+      orders: [4, 5, 6]
+    },
+    {
+      _id: 3,
+      name: "Admin",
+      email: "admin@example.com",
+      password: "admin123",
+      role: "admin",
+      address: {
+        street: "789 Oak St",
+        city: "Chicago",
+        state: "IL",
+        zip: "60601"
+      },
+      orders: [7, 8, 9]
+    }
+  ]
+
+
 };

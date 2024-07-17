@@ -1,198 +1,178 @@
 "use client";
-import React, { useState } from "react";
-//componentes
-import {
-  WelcomeMessage,
-  WelcomeMessageLogin,
-} from "../../Components/WelcomeMessage/WelcomeMessage";
-
-import { data } from "../../../public/data";
-
+import React, { useState } from 'react'
+import { data } from '../../../public/data';
 import { validateRegisterForm, validateLoginForm } from "./formValidation";
-
-//redux
-import { useCreateUserMutation } from "@/redux/services/usersApi";
-import { useLoginUserMutation } from "@/redux/services/usersApi";
-import { loginUser } from "@/redux/features/userSlice";
-import { useDispatch } from "react-redux";
-import { signIn } from "next-auth/react";
 
 //iconos
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaGoogle } from "react-icons/fa";
 import { faUser, faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { toast, Toaster } from "react-hot-toast";
+import { WelcomeMessageLogin } from '@/components/WelcomeMessage/WelcomeMessage';
+import { useRouter } from 'next/navigation'
+import { useDispatch } from 'react-redux';
 const envelopeIcon = <FontAwesomeIcon icon={faEnvelope} />;
 const userIcon = <FontAwesomeIcon icon={faUser} />;
 const lockIcon = <FontAwesomeIcon icon={faLock} />;
 
-const Register = () => {
-  /*   const [authenticated, setAuthenticated] = useState(false); */
 
-  const dataUser = data.users;
-  console.log('usuarios', dataUser);
-  //redux
-  const dispatch = useDispatch();
-  //estado para la creacion de usuarios
-  const [newUser] = useCreateUserMutation();
-  //estado para el login
-  const [login] = useLoginUserMutation();
-  //estado para las validaciones
-  const [formErrors, setFormErrors] = useState({});
 
-  const [showRegisterForm, setShowRegisterForm] = useState(false);
-  const [showLoginForm, setShowLoginForm] = useState(true);
-  const [showPassword, setShowPassword] = useState(false);
-  //estado para mensaje de bienvenida Registro
-  const [welcomeMessage, setWelcomeMessage] = useState("");
-  //estado para mensaje de bienvenida Login
-  const [welcomeMessageLogin, setWelcomeMessageLogin] = useState("");
+const page = () => {
 
-  //estado para el form de registro
-  const [registerFormData, setRegisterFormData] = useState({
-    name: "",
-    lastname: "",
-    email: "",
-    password: "",
-  });
-  //estado para el form de login
-  const [loginFormData, setLoginFormData] = useState({
-    loginEmail: "",
-    loginPassword: "",
-  });
-  //funcion para ocultar la contraseña
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-  // funcion para la vista del login
-  const showLoginFormView = () => {
-    setShowLoginForm(true);
-    setShowRegisterForm(false);
-  };
-  // funcion para la vista del registro
-  const showRegisterFormView = () => {
-    setShowLoginForm(false);
-    setShowRegisterForm(true);
-  };
+    const dispatch = useDispatch();
+    const router = useRouter();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    if (showRegisterForm) {
-      setRegisterFormData({
-        ...registerFormData,
-        [name]: value,
-      });
-    } else {
-      setLoginFormData({
-        ...loginFormData,
-        [name]: value,
-      });
-    }
-  };
-
-  //funcion para validaciones de los formularios
-  const validateForm = () => {
-    const formData = showRegisterForm ? registerFormData : loginFormData;
-    const errors = showRegisterForm
-      ? validateRegisterForm(formData)
-      : validateLoginForm(formData);
-
-    // Manejo de errores y lógica de formulario inválido
-
-    setFormErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
-
-  const handleRegisterSubmit = async (e) => {
-    e.preventDefault();
-
-    if (validateForm()) {
-      try {
-        const response = await newUser(registerFormData);
-        console.log("esto es response ", response);
-
-        if (
-          response.error &&
-          response.error.data &&
-          response.error.data.error
-        ) {
-          toast.error("Este correo electronico ya existe");
+    const dataUser = data.users;
+    console.log('usuarios', dataUser);
+    //redux
+    // const dispatch = useDispatch();
+    // //estado para la creacion de usuarios
+    // const [newUser] = useCreateUserMutation();
+    // //estado para el login
+    // const [login] = useLoginUserMutation();
+    // //estado para las validaciones
+    const [formErrors, setFormErrors] = useState({});
+  
+    const [showRegisterForm, setShowRegisterForm] = useState(false);
+    const [showLoginForm, setShowLoginForm] = useState(true);
+    const [showPassword, setShowPassword] = useState(false);
+    //estado para mensaje de bienvenida Registro
+    const [welcomeMessage, setWelcomeMessage] = useState("");
+    //estado para mensaje de bienvenida Login
+    const [welcomeMessageLogin, setWelcomeMessageLogin] = useState("");
+  
+    //estado para el form de registro
+    const [registerFormData, setRegisterFormData] = useState({
+      name: "",
+      lastname: "",
+      email: "",
+      password: "",
+    });
+    //estado para el form de login
+    const [loginFormData, setLoginFormData] = useState({
+      loginEmail: "",
+      loginPassword: "",
+    });
+    //funcion para ocultar la contraseña
+    const togglePasswordVisibility = () => {
+      setShowPassword(!showPassword);
+    };
+    // funcion para la vista del login
+    const showLoginFormView = () => {
+      setShowLoginForm(true);
+      setShowRegisterForm(false);
+    };
+    // funcion para la vista del registro
+    const showRegisterFormView = () => {
+      setShowLoginForm(false);
+      setShowRegisterForm(true);
+    };
+  
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+    
+        if (showRegisterForm) {
+          setRegisterFormData({
+            ...registerFormData,
+            [name]: value,
+          });
         } else {
-          const { name, email, password } = registerFormData;
-          setWelcomeMessage(`Hola ${name}!`);
-
-          try {
-            const loginResponse = await login({
-              loginEmail: email,
-              loginPassword: password,
-            });
-
-            if (loginResponse?.data?.token) {
-              const { user } = loginResponse.data;
-              const userName = user.name;
-              setWelcomeMessageLogin(`¡Hola de nuevo ${userName}!`);
-              dispatch(loginUser(loginResponse.data));
-            } else {
-              console.error(
-                "Error en el inicio de sesión:",
-                loginResponse?.data?.error
-              );
-            }
-
-            setLoginFormData({
-              loginEmail: "",
-              loginPassword: "",
-            });
-          } catch (error) {
-            console.error("Error al iniciar sesión automáticamente:", error);
-          }
+          setLoginFormData({
+            ...loginFormData,
+            [name]: value,
+          });
         }
-      } catch (error) {
-        console.error("Error al registrar el usuario:", error);
-      }
-    } else {
-      console.log("Formulario de registro inválido");
-    }
-  };
-
-  const handleLoginSubmit = async (e) => {
-    e.preventDefault();
-
-    if (validateForm()) {
-      try {
-        const response = await newUser(registerFormData);
-        console.log("esto es response ", response);
-
-        if (
-          response.error &&
-          response.error.data &&
-          response.error.data.error
-        ) {
-          toast.error("Usuario inválido");
-        } else {
+      };
+    
+      //funcion para validaciones de los formularios
+      const validateForm = () => {
+        const formData = showRegisterForm ? registerFormData : loginFormData;
+        const errors = showRegisterForm
+          ? validateRegisterForm(formData)
+          : validateLoginForm(formData);
+    
+        // Manejo de errores y lógica de formulario inválido
+    
+        setFormErrors(errors);
+        return Object.keys(errors).length === 0;
+      };
+    
+      const handleRegisterSubmit = async (e) => {
+        e.preventDefault();
+    
+        if (validateForm()) {
           try {
-            const loginResponse = await login({
-              loginEmail: registerFormData.email,
-              loginPassword: registerFormData.password,
-            });
-
-            console.log("loginResponse", loginResponse); // Agrega este log para entender la estructura de loginResponse
-
-            if (loginResponse?.data?.token) {
-              // La autenticación fue exitosa
-              const { user } = loginResponse.data;
-              const userName = user.name;
-              setWelcomeMessageLogin(`¡Hola de nuevo ${userName}!`);
-              dispatch(loginUser(loginResponse.data));
+            const response = await newUser(registerFormData);
+            console.log("esto es response ", response);
+    
+            if (
+              response.error &&
+              response.error.data &&
+              response.error.data.error
+            ) {
+              toast.error("Este correo electronico ya existe");
             } else {
-              console.error(
-                "Error en el inicio de sesión:",
-                loginResponse?.data?.error
-              );
-              // Puedes manejar el error de inicio de sesión aquí
+              const { name, email, password } = registerFormData;
+              setWelcomeMessage(`Hola ${name}!`);
+    
+              try {
+                const loginResponse = await login({
+                  loginEmail: email,
+                  loginPassword: password,
+                });
+    
+                if (loginResponse?.data?.token) {
+                  const { user } = loginResponse.data;
+                  const userName = user.name;
+                  setWelcomeMessageLogin(`¡Hola de nuevo ${userName}!`);
+                  dispatch(loginUser(loginResponse.data));
+                } else {
+                  console.error(
+                    "Error en el inicio de sesión:",
+                    loginResponse?.data?.error
+                  );
+                }
+    
+                setLoginFormData({
+                  loginEmail: "",
+                  loginPassword: "",
+                });
+              } catch (error) {
+                console.error("Error al iniciar sesión automáticamente:", error);
+              }
             }
+          } catch (error) {
+            console.error("Error al registrar el usuario:", error);
+          }
+        } else {
+          console.log("Formulario de registro inválido");
+        }
+      };
+    
+      const handleLoginSubmit = async (e) => {
+        e.preventDefault();
+      
+        console.log('LoginFormData', loginFormData);
 
+        if (validateForm()) {
+          try {
+            const user = dataUser.find(
+                user => user.email === loginFormData.loginEmail && user.password === loginFormData.loginPassword
+              );
+
+              console.log('user', user);
+            
+              if (user.role === 'vendedor' || user.role === 'admin') {
+                // La autenticación y verificación de roles fueron exitosas
+                setWelcomeMessageLogin(`¡Hola de nuevo ${user.name}!`);
+                // Redirigir al usuario al Dashboard
+                router.push('/Dashboard');
+              } else {
+                // El usuario no tiene el rol necesario
+                toast.error("Permiso denegado. Solo vendedores y administradores pueden acceder.");
+              }
+          
+      
             // Limpia el formulario de inicio de sesión
             setLoginFormData({
               loginEmail: "",
@@ -200,28 +180,22 @@ const Register = () => {
             });
           } catch (error) {
             console.error("Error al iniciar sesión:", error);
+            toast.error("Error al iniciar sesión");
           }
+        } else {
+          console.log("Formulario de inicio de sesión inválido");
         }
-      } catch (error) {
-        console.error("Error al registrar el usuario:", error);
-        toast.error("Usuario inválido", {
-          style: {
-            background: "red",
-            color: "white",
-          },
-        });
-      }
-    } else {
-      console.log("Formulario de inicio de sesión inválido");
-    }
-  };
+      };
+      
+    
+
 
   return (
-    <div className="min-h-screen ml-48 flex items-center justify-center ">
-      <div className="bg-white p-4 rounded shadow-xl w-96 flex flex-col">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+          <div className="bg-white p-4 rounded shadow-xl w-96 flex flex-col">
         {showRegisterForm ? (
           <>
-            <h1 className="text-2xl font-bold mb-4 text-center font-serif  mx-auto mt-4 mb-4">
+            <h1 className="text-2xl font-bold mb-4 text-center font-serif  mx-auto mt-4 ">
               Registrarse
             </h1>
             <form onSubmit={handleRegisterSubmit}>
@@ -399,7 +373,7 @@ const Register = () => {
                   />
                   <button
                     type="button"
-                    className="transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
+                    className="transition-all duration-300 ease-in-out  scale-100 hover:scale-105 absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
                     onClick={togglePasswordVisibility}
                   >
                     {showPassword ? "Ocultar" : "Mostrar"}
@@ -424,7 +398,7 @@ const Register = () => {
                   onClick={async () => {
                     signIn("google");
                   }}
-                  className=" transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 flex items-center justify-center w-full h-8 bg-red-500 hover:bg-red-800 text-white px-4 py-2 rounded focus:outline-none focus:border-teal-300 duration-200 mt-2"
+                  className=" transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 flex items-center justify-center w-full h-8 bg-red-500 hover:bg-red-800 text-white px-4 py-2 rounded focus:outline-none focus:border-teal-300  mt-2"
                 >
                   <FaGoogle className="mr-2" />
                   Accede con Google
@@ -449,19 +423,8 @@ const Register = () => {
           </>
         ) : null}
       </div>
-      <div className="min-h-screen mt-12 mb-48 flex items-center justify-center "></div>
-      <div className="bg-white p-8 rounded shadow-xl w-96 flex flex-col ml-32 font-serif text-lg font-thin mb-32">
-        <h1 className="text-2xl font-bold mb-4 text-center font-serif ">
-          Registro
-        </h1>
-        Registrarte en este sitio te permite acceder al estado e historial de tu
-        pedido. Simplemente completa los campos a continuación y configuremos
-        una nueva cuenta para ti en un abrir y cerrar de ojos. Solo te pediremos
-        la información necesaria para que el proceso de compra sea más rápido y
-        sencillo.
-      </div>
     </div>
-  );
-};
+  )
+}
 
-export default Register;
+export default page
