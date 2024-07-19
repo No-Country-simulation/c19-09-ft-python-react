@@ -5,6 +5,7 @@ import HistorialCompras from "@/Components/HistorialCompras/HistorialCompras";
 import MisReseñas from "@/Components/MisReseñas/MisReseñas";
 import MisFavoritos from "@/Components/MisFavoritos/MisFavoritos";
 import InfoPerfil from "@/Components/InfoPerfil/InfoPerfil";
+import AuthGuard from "@/components/authGuard";
 /* import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/navigation"; */
 /* import { useGetUserByIdQuery } from "@/redux/services/usersApi";
@@ -12,7 +13,7 @@ import { useAppSelector } from "@/redux/hooks";
 import { useParams } from "react-router-dom";
 import Link from "next/link"; */
 
-export default function perfil() {
+function perfil() {
   /* const userData = useAppSelector((state) => state.loginReducer.user);
   const router = useRouter();
 
@@ -120,3 +121,5 @@ export default function perfil() {
     </div>
   );
 }
+
+export default AuthGuard(perfil);

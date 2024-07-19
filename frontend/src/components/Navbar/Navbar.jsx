@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,12 +13,22 @@ import {
 import Link from "next/link";
 import { useAppSelector } from "@/redux/hooks";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "@/redux/features/userSlice";
+
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const pathname = usePathname();
+  const router = useRouter();
+
+  //estado del usuario
+  const user = useSelector((state) => state.useReducer.user);
+  console.log("user", user);
+
+  const [localUser, setLocalUser] = useState(user);
 
   //conteo de los productos del carrito
-  //items del carrito
   const cartItems = useAppSelector((state) => state.cartReducer.cartItems);
   const [cartItemsCount, setCartItemsCount] = useState(0);
 
@@ -36,24 +46,50 @@ const Navbar = () => {
     { name: "Juguetes", path: "juguetes" },
   ];
 
+  useEffect(() => {
+    setLocalUser(user);
+  }, [user]);
+
+  const handleSignOut = () => {
+    localStorage.removeItem("user");
+    dispatch(logoutUser());
+    setLocalUser(null);
+    router.push('/Sign-in');
+  };
+
+
   const renderView = () => {
     return (
       <>
-        <li className={pathname === "/My-orders" ? "underline" : ""}>
-          <Link href="/My-orders">
-            <p>My Orders</p>
-          </Link>
-        </li>
-        <li className={pathname === "/My-account" ? "underline" : ""}>
-          <Link href="/My-account">
-            <p>My Account</p>
-          </Link>
-        </li>
-        <li className={pathname === "/Sign-in" ? "underline" : ""}>
-          <Link href="/Sign-in">
-            <p>Sign in</p>
-          </Link>
-        </li>
+        {/* {user && (
+          <li className={pathname === "/My-orders" ? "underline" : ""}>
+            <Link href="/My-orders">
+              <p>My Orders</p>
+            </Link>
+          </li>
+        )} */}
+
+        {user ? (
+          <>
+            <li className={pathname === "/My-account" ? "underline" : ""}>
+              <Link href="/My-account">
+                <p>My Account</p>
+              </Link>
+            </li>
+            <li
+              className={"cursor-pointer"}
+              onClick={handleSignOut}
+            >
+              <p>Sign out</p>
+            </li>
+          </>
+        ) : (
+          <li className={pathname === "/Sign-in" ? "underline" : ""}>
+            <Link href="/Sign-in">
+              <p>Sign in</p>
+            </Link>
+          </li>
+        )}
 
         <li className={pathname === "/Carrito" ? "underline" : ""}>
           <Link href="/Carrito" legacyBehavior>

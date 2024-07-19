@@ -555,43 +555,108 @@ export const data = {
       name: "John Doe",
       email: "john.doe@example.com",
       password: "password123",
-      role: "vendedor",
+      role: "Vendedor",
       address: {
         street: "123 Main St",
         city: "New York",
         state: "NY",
         zip: "10001"
       },
-      orders: [1, 2, 3]
+      
     },
     {
       _id: 2,
       name: "Jane Smith",
       email: "jane.smith@example.com",
       password: "secret123",
-      role: "user",
+      role: "Customer",
       address: {
         street: "456 Elm St",
         city: "Los Angeles",
         state: "CA",
         zip: "90001"
-      },
-      orders: [4, 5, 6]
+      }
     },
     {
       _id: 3,
       name: "Admin",
       email: "admin@example.com",
       password: "admin123",
-      role: "admin",
+      role: "Admin",
       address: {
         street: "789 Oak St",
         city: "Chicago",
         state: "IL",
         zip: "60601"
-      },
-      orders: [7, 8, 9]
-    }
+      }
+    },
+    {
+      _id: 4,
+      name: "Vendedor 1",
+      email: "vendedor1@example.com",
+      password: "password123",
+      role: "Vendedor",
+      address: {
+        street: "123 Main St",
+        city: "New York",
+        state: "NY",
+        zip: "10001"
+      }
+    },
+    {
+      _id: 5,
+      name: "Vendedor 2",
+      email: "vendedor2@example.com",
+      password: "password123",
+      role: "Vendedor",
+      address: {
+        street: "123 Main St",
+        city: "New York",
+        state: "NY",
+        zip: "10001"
+      }
+    },
+    {
+      _id: 6,
+      name: "Vendedor 3",
+      email: "vendedor3@example.com",
+      password: "password123",
+      role: "Vendedor",
+      address: {
+        street: "123 Main St",
+        city: "New York",
+        state: "NY",
+        zip: "10001"
+      }
+    },
+    {
+      _id: 7,
+      name: "Vendedor 4",
+      email: "vendedor4@example.com",
+      password: "password123",
+      role: "Vendedor",
+      address: {
+        street: "123 Main St",
+        city: "New York",
+        state: "NY",
+        zip: "10001"
+      }
+    },
+    {
+      _id: 8,
+      name: "Vendedor 5",
+      email: "vendedor5@example.com",
+      password: "password123",
+      role: "Vendedor",
+      address: {
+        street: "123 Main St",
+        city: "New York",
+        state: "NY",
+        zip: "10001"
+      }
+    },
+
+
   ]
 
 
