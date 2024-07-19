@@ -10,14 +10,17 @@ import { useDispatch } from "react-redux";
 import { useAppSelector } from "@/redux/hooks";
 import { useEffect } from "react";
 import { getCartData } from "@/redux/features/cart";
+import { getlogindata } from "@/redux/features/userSlice";
 
 export default function Home() {
 
   const dispatch = useDispatch();
   const cartItems = useAppSelector((state) => state.cartReducer.cartItems);
+  const user = useAppSelector((state) => state.useReducer.user);
 
   useEffect(() => {
     dispatch(getCartData());
+    dispatch(getlogindata());
   }, [dispatch]);
 
 
