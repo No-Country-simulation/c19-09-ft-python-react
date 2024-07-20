@@ -4,11 +4,10 @@ import { useSelector } from "react-redux";
 import { getCartData } from "@/redux/features/cart";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import axios from 'axios'
+import axios from "axios";
 import { cleanCart } from "@/redux/features/cart";
-import { useNewPurchaseMutation } from "@/redux/services/purchaseHistoryApi"
+import { useNewPurchaseMutation } from "@/redux/services/purchaseHistoryApi";
 import { ToastContainer, toast } from "react-toastify";
-
 
 const Page = () => {
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
@@ -18,19 +17,19 @@ const Page = () => {
 
   // const [createPurchase] = useNewPurchaseMutation()
 
-
   useEffect(() => {
-   
     dispatch(getCartData());
   }, [dispatch]);
 
   const count = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   const calculateTotal = () => {
-    const total = cartItems.reduce((acc, item) => acc + item.subtotal, 0).toFixed(2);
-    return total
+    const total = cartItems
+      .reduce((acc, item) => acc + item.subtotal, 0)
+      .toFixed(2);
+    return total;
   };
-  const totalPay = calculateTotal()
+  const totalPay = calculateTotal();
   console.log("CartItems:", cartItems);
 
   const handleCreateOrder = async () => {
@@ -47,11 +46,9 @@ const Page = () => {
       });
 
       if (response.ok) {
-
         const orderData = await response.json();
         console.log("Respuesta del backend:", orderData);
         return orderData.cartData.id;
-
       } else {
         const errorText = await response.text();
         console.error(
@@ -67,32 +64,32 @@ const Page = () => {
     }
   };
 
-
   //envio de mail de compras
   const sendEmail = async () => {
     try {
-      const response = await fetch('/api/send', {
-        method: 'POST',
+      const response = await fetch("/api/send", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           cartItems: cartItems,
           userId: userId,
-          totalPay: totalPay
+          totalPay: totalPay,
         }),
       });
-  
+
       if (!response.ok) {
-        throw new Error('Failed to send email');
+        throw new Error("Failed to send email");
       }
-      toast.success('Your email message has been sent successfully');
+      toast.success("Your email message has been sent successfully");
     } catch (error) {
-      console.error('Error sending email:', error);
-      toast.error('An error occurred while sending the email. Please try again.');
+      console.error("Error sending email:", error);
+      toast.error(
+        "An error occurred while sending the email. Please try again."
+      );
     }
   };
-
 
   //? Purchase History
 
@@ -106,27 +103,24 @@ const Page = () => {
 
   const purchase = {
     // user: userId,
-    product: cartItemsId
-  }
+    product: cartItemsId,
+  };
 
   const handlePurchase = async () => {
     try {
       const config = {
         purchase: purchase,
-        token: userToken
-      }
+        token: userToken,
+      };
 
-      const { data, error } = await createPurchase(config)
+      const { data, error } = await createPurchase(config);
       console.log("Respuesta del backend:", data);
-      sendEmail()
-
+      sendEmail();
     } catch (error) {
       console.error("Error al procesar la respuesta del backend:", error);
     }
-  }
+  };
 
-  
-  
   return (
     <div className="p-14 font-bold">
       <fieldset className="border  p-4 rounded-md ">
@@ -212,9 +206,9 @@ const Page = () => {
                                   breakdown: {
                                     item_total: {
                                       currency_code: "USD",
-                                      value: totalPay
-                                    }
-                                  }
+                                      value: totalPay,
+                                    },
+                                  },
                                 },
                                 items: cartItems.map((item) => ({
                                   name: item.title,
@@ -235,40 +229,31 @@ const Page = () => {
                         }}
                         onApprove={async (data, actions) => {
                           try {
-                          const order = await actions.order?.capture()
-                          console.log("order: ", order);
-                          handlePurchase();
-                           dispatch(cleanCart());
-                            
+                            const order = await actions.order?.capture();
+                            console.log("order: ", order);
+                            handlePurchase();
+                            dispatch(cleanCart());
                           } catch (error) {
-                            console.log("error onAprove", error)
+                            console.log("error onAprove", error);
                           }
                         }}
                         onCancel={() => {
                           console.log("compra cancelada");
                         }}
                       />
-                 
                     </PayPalScriptProvider>
                   </div>
                 </div>
               </div>
             </fieldset>
           </div>
-     
         </div>
       </fieldset>
-  
-      <ToastContainer
-                theme="colored"
-                position="top-center"
-                autoClose={2000}
-              />
-      {/* cierre del div contenedor     */}
 
+      <ToastContainer theme="colored" position="top-center" autoClose={2000} />
+      {/* cierre del div contenedor     */}
     </div>
   );
 };
 
-export default Page
-
+export default Page;
