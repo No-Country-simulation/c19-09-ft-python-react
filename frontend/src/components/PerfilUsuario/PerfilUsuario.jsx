@@ -378,14 +378,14 @@ const PerfilUsuario = () => {
 
         <div className="flex justify-center items-center">
           <button
-            className="mr-6 bg-red-600 text-white rounded px-2 py-1 hover:bg-red-800 focus:outline-none cursor-pointer w-20 "
+            className="bg-secondary  text-white font-bold py-2 px-4 rounded transition-transform duration-300 hover:scale-110 hover:text-primary cursor-pointer"
             onClick={() => setEditable(true)} // Habilita la edición
             disabled={editable}
           >
             Editar
           </button>
           <button
-            className="bg-teal-500 text-white rounded px-2 py-1 hover:bg-teal-800 focus:outline-none cursor-pointer w-20"
+            className="text-secondary font-semibold py-2 px-4 transition-transform duration-300 hover:scale-110 hover:text-secondary cursor-pointer"
             onClick={() => setEditable(false)} // Deshabilita la edición
             disabled={!editable}
           >

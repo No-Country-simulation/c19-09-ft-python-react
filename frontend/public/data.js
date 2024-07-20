@@ -5,7 +5,7 @@ export const data = {
       title: "Estantería de madera",
       price: 15000,
       image: [
-        "/images/mueble.jpg",
+        "/images/Estanteria.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -23,7 +23,7 @@ export const data = {
       title: "Mesa de café de madera",
       price: 20000,
       image: [
-        "/images/mueble.jpg",
+        "/images/mesa.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -41,7 +41,7 @@ export const data = {
       title: "Cuchara de madera",
       price: 500,
       image: [
-        "/images/mueble.jpg",
+        "/images/cuchara.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -59,7 +59,7 @@ export const data = {
       title: "Tabla de cortar de madera",
       price: 3000,
       image: [
-        "/images/mueble.jpg",
+        "/images/tabla.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -77,7 +77,7 @@ export const data = {
       title: "Puzzle de madera para niños",
       price: 1500,
       image: [
-        "/images/mueble.jpg",
+        "/images/puzzle.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -95,7 +95,7 @@ export const data = {
       title: "Camión de juguete de madera",
       price: 2500,
       image: [
-        "/images/mueble.jpg",
+        "/images/camion.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -113,7 +113,7 @@ export const data = {
       title: "Juego de cuchillos de cocina",
       price: 10000,
       image: [
-        "/images/mueble.jpg",
+        "/images/cuchillos.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -131,7 +131,7 @@ export const data = {
       title: "Silla de madera",
       price: 12000,
       image: [
-        "/images/mueble.jpg",
+        "/images/silla.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -149,7 +149,7 @@ export const data = {
       title: "Caja de almacenamiento de madera",
       price: 5000,
       image: [
-        "/images/mueble.jpg",
+        "/images/caja.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -167,7 +167,7 @@ export const data = {
       title: "Juguete de construcción de madera",
       price: 3500,
       image: [
-        "/images/mueble.jpg",
+        "/images/construccion.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -185,7 +185,7 @@ export const data = {
       title: "Banco de trabajo de madera",
       price: 18000,
       image: [
-        "/images/mueble.jpg",
+        "/images/trabajo.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -203,7 +203,7 @@ export const data = {
       title: "Taburete de madera",
       price: 8000,
       image: [
-        "/images/mueble.jpg",
+        "/images/taburet.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -221,7 +221,7 @@ export const data = {
       title: "Juego de tazas de madera",
       price: 6000,
       image: [
-        "/images/mueble.jpg",
+        "/images/tazas.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -239,7 +239,7 @@ export const data = {
       title: "Bloques de construcción de madera",
       price: 3000,
       image: [
-        "/images/mueble.jpg",
+        "/images/bloque.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -257,7 +257,7 @@ export const data = {
       title: "Lámpara de mesa de madera",
       price: 9000,
       image: [
-        "/images/mueble.jpg",
+        "/images/lampara.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -275,7 +275,7 @@ export const data = {
       title: "Juego de cucharas medidoras de madera",
       price: 2500,
       image: [
-        "/images/mueble.jpg",
+        "/images/cucharas.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -293,7 +293,7 @@ export const data = {
       title: "Carro de juguete de madera",
       price: 2200,
       image: [
-        "/images/mueble.jpg",
+        "/images/auto.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -311,7 +311,7 @@ export const data = {
       title: "Cuchillo de chef con mango de madera",
       price: 7000,
       image: [
-        "/images/mueble.jpg",
+        "/images/carnicero.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -329,7 +329,7 @@ export const data = {
       title: "Mesa plegable de madera",
       price: 15000,
       image: [
-        "/images/mueble.jpg",
+        "/images/bambu.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -347,7 +347,7 @@ export const data = {
       title: "Set de cubiertos de madera",
       price: 4000,
       image: [
-        "/images/mueble.jpg",
+        "/images/teca.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -365,7 +365,7 @@ export const data = {
       title: "Cartera de cuero artesanal",
       price: 8500,
       image: [
-        "/images/mueble.jpg",
+        "/images/cartera.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -383,7 +383,7 @@ export const data = {
       title: "Cinturón de cuero clásico",
       price: 3500,
       image: [
-        "/images/mueble.jpg",
+        "/images/cinto.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -401,7 +401,7 @@ export const data = {
       title: "Bolso de mano de cuero",
       price: 12000,
       image: [
-        "/images/mueble.jpg",
+        "/images/mano.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -419,7 +419,7 @@ export const data = {
       title: "Monedero de cuero compacto",
       price: 2000,
       image: [
-        "/images/mueble.jpg",
+        "/images/billetera.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -437,7 +437,7 @@ export const data = {
       title: "Llavero de cuero",
       price: 1000,
       image: [
-        "/images/mueble.jpg",
+        "/images/llavero.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -455,7 +455,7 @@ export const data = {
       title: "Funda para laptop de cuero",
       price: 6000,
       image: [
-        "/images/mueble.jpg",
+        "/images/funda.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -473,7 +473,7 @@ export const data = {
       title: "Botas de cuero para hombre",
       price: 18000,
       image: [
-        "/images/mueble.jpg",
+        "/images/bota.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -491,7 +491,7 @@ export const data = {
       title: "Sandalias de cuero para mujer",
       price: 8000,
       image: [
-        "/images/mueble.jpg",
+        "/images/chancla.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -509,7 +509,7 @@ export const data = {
       title: "Pulsera de cuero trenzado",
       price: 1500,
       image: [
-        "/images/mueble.jpg",
+        "/images/pulsera.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -527,7 +527,7 @@ export const data = {
       title: "Funda para cuaderno de cuero",
       price: 4000,
       image: [
-        "/images/mueble.jpg",
+        "/images/cuaderno.jpg",
         "/images/img2.jpg",
         "/images/img3.jpg",
         "/images/img4.jpg",
@@ -542,12 +542,112 @@ export const data = {
     },
   ],
 
-  categories: [
-    "todos",
-    "utensilios",
-    "muebles",
-    "juguetes",
-    "accesorios",
-    "calzado",
+  categories: ["utensilios", "muebles", "juguetes", "accesorios"],
+
+  users: [
+    {
+      _id: 1,
+      name: "John Doe",
+      email: "john.doe@example.com",
+      password: "password123",
+      role: "Vendedor",
+      address: {
+        street: "123 Main St",
+        city: "New York",
+        state: "NY",
+        zip: "10001",
+      },
+    },
+    {
+      _id: 2,
+      name: "Jane Smith",
+      email: "alan@gmail.com",
+      password: "123",
+      role: "Customer",
+      address: {
+        street: "456 Elm St",
+        city: "Los Angeles",
+        state: "CA",
+        zip: "90001",
+      },
+    },
+    {
+      _id: 3,
+      name: "Admin",
+      email: "admin@example.com",
+      password: "admin123",
+      role: "Admin",
+      address: {
+        street: "789 Oak St",
+        city: "Chicago",
+        state: "IL",
+        zip: "60601",
+      },
+    },
+    {
+      _id: 4,
+      name: "Vendedor 1",
+      email: "vendedor1@example.com",
+      password: "password123",
+      role: "Vendedor",
+      address: {
+        street: "123 Main St",
+        city: "New York",
+        state: "NY",
+        zip: "10001",
+      },
+    },
+    {
+      _id: 5,
+      name: "Vendedor 2",
+      email: "vendedor2@example.com",
+      password: "password123",
+      role: "Vendedor",
+      address: {
+        street: "123 Main St",
+        city: "New York",
+        state: "NY",
+        zip: "10001",
+      },
+    },
+    {
+      _id: 6,
+      name: "Vendedor 3",
+      email: "vendedor3@example.com",
+      password: "password123",
+      role: "Vendedor",
+      address: {
+        street: "123 Main St",
+        city: "New York",
+        state: "NY",
+        zip: "10001",
+      },
+    },
+    {
+      _id: 7,
+      name: "Vendedor 4",
+      email: "vendedor4@example.com",
+      password: "password123",
+      role: "Vendedor",
+      address: {
+        street: "123 Main St",
+        city: "New York",
+        state: "NY",
+        zip: "10001",
+      },
+    },
+    {
+      _id: 8,
+      name: "Vendedor 5",
+      email: "vendedor5@example.com",
+      password: "password123",
+      role: "Vendedor",
+      address: {
+        street: "123 Main St",
+        city: "New York",
+        state: "NY",
+        zip: "10001",
+      },
+    },
   ],
 };
