@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-//componentes
+// componentes
 import {
   WelcomeMessage,
   WelcomeMessageLogin,
@@ -10,63 +10,62 @@ import { data } from "../../../public/data";
 
 import { validateRegisterForm, validateLoginForm } from "./formValidation";
 
-//redux
+// redux
 import { useCreateUserMutation } from "@/redux/services/usersApi";
 import { useLoginUserMutation } from "@/redux/services/usersApi";
 import { loginUser } from "@/redux/features/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "next-auth/react";
 
-//iconos
+// iconos
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaGoogle } from "react-icons/fa";
 import { faUser, faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { toast, Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+
 const envelopeIcon = <FontAwesomeIcon icon={faEnvelope} />;
 const userIcon = <FontAwesomeIcon icon={faUser} />;
 const lockIcon = <FontAwesomeIcon icon={faLock} />;
 
 const Register = () => {
-  /*   const [authenticated, setAuthenticated] = useState(false); */
-
   const router = useRouter();
 
   const dataUser = data.users;
 
-  //redux
+  // redux
   const dispatch = useDispatch();
   const user = useSelector((state) => state.useReducer.user);
   console.log("user", user);
 
-  //estado para la creacion de usuarios
+  // estado para la creacion de usuarios
   const [newUser] = useCreateUserMutation();
-  //estado para el login
+  // estado para el login
   const [login] = useLoginUserMutation();
-  //estado para las validaciones
+  // estado para las validaciones
   const [formErrors, setFormErrors] = useState({});
 
   const [showRegisterForm, setShowRegisterForm] = useState(false);
   const [showLoginForm, setShowLoginForm] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
-  //estado para mensaje de bienvenida Registro
+  // estado para mensaje de bienvenida Registro
   const [welcomeMessage, setWelcomeMessage] = useState("");
-  //estado para mensaje de bienvenida Login
+  // estado para mensaje de bienvenida Login
   const [welcomeMessageLogin, setWelcomeMessageLogin] = useState("");
 
-  //estado para el form de registro
+  // estado para el form de registro
   const [registerFormData, setRegisterFormData] = useState({
     name: "",
     lastname: "",
     email: "",
     password: "",
   });
-  //estado para el form de login
+  // estado para el form de login
   const [loginFormData, setLoginFormData] = useState({
     loginEmail: "",
     loginPassword: "",
   });
-  //funcion para ocultar la contraseña
+  // funcion para ocultar la contraseña
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -97,7 +96,7 @@ const Register = () => {
     }
   };
 
-  //funcion para validaciones de los formularios
+  // funcion para validaciones de los formularios
   const validateForm = () => {
     const formData = showRegisterForm ? registerFormData : loginFormData;
     const errors = showRegisterForm
@@ -164,29 +163,36 @@ const Register = () => {
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-  
-    console.log('LoginFormData', loginFormData);
+
+    console.log("LoginFormData", loginFormData);
 
     if (validateForm()) {
       try {
         const user = dataUser.find(
-            user => user.email === loginFormData.loginEmail && user.password === loginFormData.loginPassword
-          );
+          (user) =>
+            user.email === loginFormData.loginEmail &&
+            user.password === loginFormData.loginPassword
+        );
 
-          console.log('user', user);
-        
-          if (user.role === 'vendedor' || user.role === 'admin' || user.role === 'Customer') {
-            // La autenticación y verificación de roles fueron exitosas
-            setWelcomeMessageLogin(`¡Hola de nuevo ${user.name}!`);
-            dispatch(loginUser({ user }));
-            // Redirigir al usuario al Dashboard
-            router.push('/My-account');
-          } else {
-            // El usuario no tiene el rol necesario
-            toast.error("Permiso denegado. Solo vendedores y administradores pueden acceder.");
-          }
-      
-  
+        console.log("user", user);
+
+        if (
+          user.role === "vendedor" ||
+          user.role === "admin" ||
+          user.role === "Customer"
+        ) {
+          // La autenticación y verificación de roles fueron exitosas
+          setWelcomeMessageLogin(`¡Hola de nuevo ${user.name}!`);
+          dispatch(loginUser({ user }));
+          // Redirigir al usuario al Dashboard
+          router.push("/My-account");
+        } else {
+          // El usuario no tiene el rol necesario
+          toast.error(
+            "Permiso denegado. Solo vendedores y administradores pueden acceder."
+          );
+        }
+
         // Limpia el formulario de inicio de sesión
         setLoginFormData({
           loginEmail: "",
@@ -202,11 +208,11 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen ml-48 flex items-center justify-center ">
+    <div className="min-h-screen flex items-center justify-center bg-primary">
       <div className="bg-white p-4 rounded shadow-xl w-96 flex flex-col">
         {showRegisterForm ? (
           <>
-            <h1 className="text-2xl font-bold text-center font-serif  mx-auto mt-4 mb-4">
+            <h1 className="text-2xl font-bold text-center font-serif text-secondary mx-auto mt-4 mb-4">
               Registrarse
             </h1>
             <form onSubmit={handleRegisterSubmit}>
@@ -214,7 +220,7 @@ const Register = () => {
               <div className="mb-4">
                 <label
                   htmlFor="name"
-                  className="block text-gray-700 text-sm font-semibold mb-2"
+                  className="block text-secondary text-sm font-semibold mb-2"
                 >
                   Nombre
                 </label>
@@ -225,7 +231,7 @@ const Register = () => {
                   placeholder="Nombre"
                   value={registerFormData.name}
                   onChange={handleChange}
-                  className={`transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 mr-10 bg-gray-50 border border-gray-300 text-black-500 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-teal-500 dark:focus:border-teal-500`}
+                  className={`transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 bg-gray-50 border border-gray-300 text-secondary text-sm rounded-lg focus:ring-secondary focus:border-secondary block w-full p-2`}
                 />
                 {formErrors.name && (
                   <p className="text-red-500 text-sm mt-1">{formErrors.name}</p>
@@ -235,7 +241,7 @@ const Register = () => {
               <div className="mb-4">
                 <label
                   htmlFor="lastname"
-                  className="block text-gray-700 text-sm font-semibold mb-2"
+                  className="block text-secondary text-sm font-semibold mb-2"
                 >
                   Apellido
                 </label>
@@ -246,7 +252,7 @@ const Register = () => {
                   placeholder="Apellido"
                   value={registerFormData.lastname}
                   onChange={handleChange}
-                  className={`transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 mr-10 bg-gray-50 border border-gray-300 text-black-500 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-teal-500 dark:focus:border-teal-500`}
+                  className={`transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 bg-gray-50 border border-gray-300 text-secondary text-sm rounded-lg focus:ring-secondary focus:border-secondary block w-full p-2`}
                 />
                 {formErrors.lastname && (
                   <p className="text-red-500 text-sm mt-1">
@@ -258,7 +264,7 @@ const Register = () => {
               <div className="mb-4">
                 <label
                   htmlFor="email"
-                  className="block text-gray-700 text-sm font-semibold mb-2"
+                  className="block text-secondary text-sm font-semibold mb-2"
                 >
                   {envelopeIcon} Correo Electrónico
                 </label>
@@ -269,7 +275,7 @@ const Register = () => {
                   placeholder="Email"
                   value={registerFormData.email}
                   onChange={handleChange}
-                  className={`transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 mr-10 bg-gray-50 border border-gray-300 text-black-500 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-teal-500 dark:focus:border-teal-500`}
+                  className={`transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 bg-gray-50 border border-gray-300 text-secondary text-sm rounded-lg focus:ring-secondary focus:border-secondary block w-full p-2`}
                 />
                 {formErrors.email && (
                   <p className="text-red-500 text-sm mt-1">
@@ -281,70 +287,62 @@ const Register = () => {
               <div className="mb-4">
                 <label
                   htmlFor="password"
-                  className="block text-gray-700 text-sm font-semibold mb-2"
+                  className="block text-secondary text-sm font-semibold mb-2"
                 >
                   {lockIcon} Contraseña
                 </label>
-                <div className="relative">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    id="password"
-                    name="password"
-                    placeholder="Contraseña"
-                    value={registerFormData.password}
-                    onChange={handleChange}
-                    className={`transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 mr-10 bg-gray-50 border border-gray-300 text-black-500 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-teal-500 dark:focus:border-teal-500`}
-                  />
-                  <button
-                    type="button"
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
-                    onClick={togglePasswordVisibility}
-                  >
-                    {showPassword ? "Ocultar" : "Mostrar"}
-                  </button>
-                </div>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  name="password"
+                  placeholder="Contraseña"
+                  value={registerFormData.password}
+                  onChange={handleChange}
+                  className={`transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 bg-gray-50 border border-gray-300 text-secondary text-sm rounded-lg focus:ring-secondary focus:border-secondary block w-full p-2`}
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="text-secondary mt-1 text-sm underline"
+                >
+                  {showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+                </button>
                 {formErrors.password && (
                   <p className="text-red-500 text-sm mt-1">
                     {formErrors.password}
                   </p>
                 )}
               </div>
-
-              <div className="mt-6">
+              {/* Botón de Enviar */}
+              <div className="flex items-center justify-between">
                 <button
                   type="submit"
-                  className="transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 w-full bg-teal-500 text-white rounded px-4 py-2 hover:bg-red-600 focus:outline-none"
+                  className="bg-secondary hover:bg-secondary-dark text-white font-bold py-2 px-4 rounded transition-all duration-300 ease-in-out"
                 >
                   Registrarse
                 </button>
+                <button
+                  type="button"
+                  onClick={showLoginFormView}
+                  className="text-secondary font-semibold py-2 px-4 rounded transition-all duration-300 ease-in-out"
+                >
+                  Ya tengo cuenta
+                </button>
               </div>
-              <Toaster position="top-center" />
             </form>
-
-            <div className="mt-2 flex flex-col">
-              <h1 className="mt-2">¿Ya tienes una cuenta?</h1>
-              <button
-                className=" transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 mt-2 bg-red-500 text-white rounded px-4 py-2 hover:bg-red-800 focus:outline-none"
-                onClick={showLoginFormView}
-              >
-                {userIcon} Iniciar sesión
-              </button>
-              {welcomeMessage && <WelcomeMessage message={welcomeMessage} />}
-            </div>
+            <Toaster />
           </>
-        ) : null}
-
-        {showLoginForm ? (
+        ) : showLoginForm ? (
           <>
-            <h1 className=" text-2xl font-semibold mb-2">
-              {userIcon} Iniciar sesión
+            <h1 className="text-2xl font-bold text-center font-serif text-secondary mx-auto mt-4 mb-4">
+              Iniciar sesión
             </h1>
             <form onSubmit={handleLoginSubmit}>
-              {/* Correo Electrónico para inicio de sesión */}
-              <div className="mb-4 mt-4">
+              {/* Correo Electrónico */}
+              <div className="mb-4">
                 <label
                   htmlFor="loginEmail"
-                  className="block text-gray-700 text-sm font-semibold mb-2"
+                  className="block text-secondary text-sm font-semibold mb-2"
                 >
                   {envelopeIcon} Correo Electrónico
                 </label>
@@ -355,7 +353,7 @@ const Register = () => {
                   placeholder="Email"
                   value={loginFormData.loginEmail}
                   onChange={handleChange}
-                  className={`transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 mr-10 bg-gray-50 border border-gray-300 text-black-500 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-teal-500 dark:focus:border-teal-500`}
+                  className={`transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 bg-gray-50 border border-gray-300 text-secondary text-sm rounded-lg focus:ring-secondary focus:border-secondary block w-full p-2`}
                 />
                 {formErrors.loginEmail && (
                   <p className="text-red-500 text-sm mt-1">
@@ -363,87 +361,56 @@ const Register = () => {
                   </p>
                 )}
               </div>
-
               {/* Contraseña */}
               <div className="mb-4">
                 <label
                   htmlFor="loginPassword"
-                  className="block text-gray-700 text-sm font-semibold mb-2"
+                  className="block text-secondary text-sm font-semibold mb-2"
                 >
                   {lockIcon} Contraseña
                 </label>
-                <div className="relative">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    id="loginPassword"
-                    name="loginPassword"
-                    placeholder="Contraseña"
-                    value={loginFormData.loginPassword}
-                    onChange={handleChange}
-                    className={`transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 mr-10 bg-gray-50 border border-gray-300 text-black-500 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-teal-500 dark:focus:border-teal-500`}
-                  />
-                  <button
-                    type="button"
-                    className="transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 absolute right-2 top-1/2  -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
-                    onClick={togglePasswordVisibility}
-                  >
-                    {showPassword ? "Ocultar" : "Mostrar"}
-                  </button>
-                </div>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="loginPassword"
+                  name="loginPassword"
+                  placeholder="Contraseña"
+                  value={loginFormData.loginPassword}
+                  onChange={handleChange}
+                  className={`transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 bg-gray-50 border border-gray-300 text-secondary text-sm rounded-lg focus:ring-secondary focus:border-secondary block w-full p-2`}
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="text-secondary mt-1 text-sm underline"
+                >
+                  {showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+                </button>
                 {formErrors.loginPassword && (
                   <p className="text-red-500 text-sm mt-1">
                     {formErrors.loginPassword}
                   </p>
                 )}
               </div>
-
-              <div className="mt-6">
+              {/* Botón de Enviar */}
+              <div className="flex items-center justify-between">
                 <button
                   type="submit"
-                  className=" transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 w-full bg-teal-500 text-white rounded px-4 py-2 hover:bg-red-600 focus:outline-none"
+                  className="bg-secondary hover:bg-secondary-dark text-white font-bold py-2 px-4 rounded transition-all duration-300 ease-in-out"
                 >
-                  Ingresar
+                  Iniciar sesión
                 </button>
                 <button
                   type="button"
-                  onClick={async () => {
-                    signIn("google");
-                  }}
-                  className=" transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 flex items-center justify-center w-full h-8 bg-red-500 hover:bg-red-800 text-white px-4 py-2 rounded focus:outline-none focus:border-teal-300  mt-2"
+                  onClick={showRegisterFormView}
+                  className="text-secondary font-semibold py-2 px-4 rounded transition-all duration-300 ease-in-out"
                 >
-                  <FaGoogle className="mr-2" />
-                  Accede con Google
+                  Crear cuenta
                 </button>
-                <Toaster position="top-center" />
               </div>
             </form>
-            <div className="mt-2 text-center">
-              <h1 className="text-sm text-gray-600 mb-2 mt-2">
-                ¿No tienes cuenta?{" "}
-              </h1>
-              <button
-                className="transition-all duration-300 ease-in-out transform scale-100 hover:scale-105 bg-teal-800 text-white rounded px-4 py-2 hover:bg-red-800 focus:outline-none"
-                onClick={showRegisterFormView}
-              >
-                Regístrate
-              </button>
-            </div>
-            {welcomeMessageLogin && (
-              <WelcomeMessageLogin message={welcomeMessageLogin} />
-            )}
+            <Toaster />
           </>
         ) : null}
-      </div>
-      <div className="min-h-screen mt-12 mb-48 flex items-center justify-center "></div>
-      <div className="bg-white p-8 rounded shadow-xl w-96 flex flex-col ml-32 font-serif text-lg font-thin mb-32">
-        <h1 className="text-2xl font-bold mb-4 text-center font-serif ">
-          Registro
-        </h1>
-        Registrarte en este sitio te permite acceder al estado e historial de tu
-        pedido. Simplemente completa los campos a continuación y configuremos
-        una nueva cuenta para ti en un abrir y cerrar de ojos. Solo te pediremos
-        la información necesaria para que el proceso de compra sea más rápido y
-        sencillo.
       </div>
     </div>
   );
