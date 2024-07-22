@@ -10,7 +10,7 @@ import { toast, Toaster } from "react-hot-toast";
 const Carrito = () => {
   const dispatch = useAppDispatch();
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
-  // const userId = useAppSelector((state) => state.loginReducer.user);
+  const user = useAppSelector((state) => state.useReducer.user);
   // const userToken = useAppSelector((state) => state.loginReducer.token);
 
   let idItems = [];
@@ -84,6 +84,7 @@ const Carrito = () => {
   };
 
   const count = cartItems.reduce((total, item) => total + item.quantity, 0);
+  const isCartEmpty = cartItems.length === 0;
 
   const calculateTotal = () => {
     return cartItems.reduce((acc, item) => acc + item.subtotal, 0).toFixed(2);
@@ -181,7 +182,7 @@ const Carrito = () => {
               <br />
               <Link
                 href="/#product"
-                className="underline font-bold text-primary"
+                className="underline font-bold text-secondary"
               >
                 <span>Revisa el catalogo para agregar productos</span>
               </Link>
@@ -208,15 +209,29 @@ const Carrito = () => {
                     </span>
                   </p>
                   <br />
-
-                  <Link href="/Checkout">
-                    <button
-                      className="bg-secondary text-white text-base py-2 px-10 rounded-lg mx-2 
-      flex justify-center items-center text-center whitespace-nowrap hover:bg-bgred hover:text-white"
-                    >
-                      Finalizar Compra
-                    </button>
-                  </Link>
+                  {!isCartEmpty && (
+        <>
+          {user ? (
+            <Link href="/Checkout">
+              <button
+                className="bg-secondary text-white text-base py-2 px-10 rounded-lg mx-2 
+                flex justify-center items-center text-center whitespace-nowrap hover:bg-bgred hover:text-white"
+              >
+                Finalizar Compra
+              </button>
+            </Link>
+          ) : (
+            <Link href="/Sign-in">
+              <button
+                className="bg-secondary text-white text-base py-2 px-10 rounded-lg mx-2 
+                flex justify-center items-center text-center whitespace-nowrap hover:bg-bgred hover:text-white"
+              >
+                Inicia Sesión para Finalizar Compra
+              </button>
+            </Link>
+          )}
+        </>
+      )}
                 </div>
               </div>
             </fieldset>

@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "@/redux/features/userSlice";
 import Buscador from "../Buscador/Buscador";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+// import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,6 @@ const Navbar = () => {
 
   // estado del usuario
   const user = useSelector((state) => state.useReducer.user);
-  console.log("user", user);
 
   const [localUser, setLocalUser] = useState(user);
 

@@ -17,6 +17,7 @@ export const data = {
       material: "Roble",
       size: "Grande",
       finish: "Barnizado",
+      idvendedor: 1,
     },
     {
       _id: 2,
@@ -35,6 +36,7 @@ export const data = {
       material: "Nogal",
       size: "Mediana",
       finish: "Natural",
+      idvendedor: 4,
     },
     {
       _id: 3,
@@ -53,6 +55,7 @@ export const data = {
       material: "Pino",
       size: "Pequeña",
       finish: "Natural",
+      idvendedor: 5,
     },
     {
       _id: 4,
@@ -71,6 +74,7 @@ export const data = {
       material: "Bambú",
       size: "Mediana",
       finish: "Aceitado",
+      idvendedor: 1,
     },
     {
       _id: 5,
@@ -89,6 +93,7 @@ export const data = {
       material: "Abedul",
       size: "Pequeño",
       finish: "Pintado",
+      idvendedor: 4,
     },
     {
       _id: 6,
@@ -107,6 +112,7 @@ export const data = {
       material: "Cedro",
       size: "Mediano",
       finish: "Lacado",
+      idvendedor: 1,
     },
     {
       _id: 7,
@@ -125,6 +131,7 @@ export const data = {
       material: "Acero inoxidable y Roble",
       size: "Grande",
       finish: "Pulido",
+      idvendedor: 5,
     },
     {
       _id: 8,
@@ -143,6 +150,7 @@ export const data = {
       material: "Arce",
       size: "Grande",
       finish: "Barnizado",
+      idvendedor: 7,
     },
     {
       _id: 9,
@@ -161,6 +169,7 @@ export const data = {
       material: "Pino",
       size: "Mediana",
       finish: "Aceitado",
+      idvendedor: 6,
     },
     {
       _id: 10,
@@ -179,6 +188,7 @@ export const data = {
       material: "Haya",
       size: "Pequeño",
       finish: "Pintado",
+      idvendedor: 1,
     },
     {
       _id: 11,
@@ -197,6 +207,7 @@ export const data = {
       material: "Fresno",
       size: "Grande",
       finish: "Barnizado",
+      idvendedor: 4,
     },
     {
       _id: 12,
@@ -215,6 +226,7 @@ export const data = {
       material: "Teca",
       size: "Mediano",
       finish: "Lacado",
+      idvendedor: 1,
     },
     {
       _id: 13,
@@ -233,6 +245,7 @@ export const data = {
       material: "Nogal",
       size: "Pequeño",
       finish: "Natural",
+      idvendedor: 5,
     },
     {
       _id: 14,
@@ -251,6 +264,7 @@ export const data = {
       material: "Cedro",
       size: "Pequeño",
       finish: "Natural",
+      idvendedor: 1,
     },
     {
       _id: 15,
@@ -269,6 +283,7 @@ export const data = {
       material: "Roble",
       size: "Mediana",
       finish: "Barnizado",
+      idvendedor: 4,
     },
     {
       _id: 16,
@@ -287,6 +302,7 @@ export const data = {
       material: "Pino",
       size: "Pequeño",
       finish: "Natural",
+      idvendedor: 5,
     },
     {
       _id: 17,
@@ -305,6 +321,7 @@ export const data = {
       material: "Haya",
       size: "Pequeño",
       finish: "Pintado",
+      idvendedor: 1,
     },
     {
       _id: 18,
@@ -323,6 +340,7 @@ export const data = {
       material: "Acero inoxidable y Roble",
       size: "Grande",
       finish: "Pulido",
+      idvendedor: 5,
     },
     {
       _id: 19,
@@ -341,6 +359,7 @@ export const data = {
       material: "Bambú",
       size: "Mediana",
       finish: "Aceitado",
+      idvendedor: 4,
     },
     {
       _id: 20,
@@ -359,6 +378,7 @@ export const data = {
       material: "Teca",
       size: "Pequeño",
       finish: "Natural",
+      idvendedor: 5,
     },
     {
       _id: 21,
@@ -377,6 +397,7 @@ export const data = {
       material: "Cuero",
       size: "Mediana",
       finish: "Natural",
+      idvendedor: 8,
     },
     {
       _id: 22,
@@ -395,6 +416,7 @@ export const data = {
       material: "Cuero",
       size: "Grande",
       finish: "Pulido",
+      idvendedor: 8,
     },
     {
       _id: 23,
@@ -413,6 +435,7 @@ export const data = {
       material: "Cuero",
       size: "Grande",
       finish: "Natural",
+      idvendedor: 5,
     },
     {
       _id: 24,
@@ -431,6 +454,7 @@ export const data = {
       material: "Cuero",
       size: "Pequeño",
       finish: "Pulido",
+      idvendedor: 1,
     },
     {
       _id: 25,
@@ -449,6 +473,7 @@ export const data = {
       material: "Cuero",
       size: "Pequeño",
       finish: "Natural",
+      idvendedor: 5,
     },
     {
       _id: 26,
@@ -467,6 +492,7 @@ export const data = {
       material: "Cuero",
       size: "Mediana",
       finish: "Pulido",
+      idvendedor: 8,
     },
     {
       _id: 27,
@@ -485,6 +511,7 @@ export const data = {
       material: "Cuero",
       size: "Grande",
       finish: "Natural",
+      idvendedor: 7,
     },
     {
       _id: 28,
@@ -503,6 +530,7 @@ export const data = {
       material: "Cuero",
       size: "Mediana",
       finish: "Pulido",
+      idvendedor: 6,
     },
     {
       _id: 29,
@@ -521,6 +549,7 @@ export const data = {
       material: "Cuero",
       size: "Pequeña",
       finish: "Natural",
+      idvendedor: 6,
     },
     {
       _id: 30,
@@ -539,6 +568,7 @@ export const data = {
       material: "Cuero",
       size: "Mediana",
       finish: "Natural",
+      idvendedor: 4,
     },
   ],
 
@@ -551,6 +581,8 @@ export const data = {
       email: "john.doe@example.com",
       password: "password123",
       role: "Vendedor",
+      image: "/images/avatars/hombre.jpg",
+      phone: "123-456-7890",
       address: {
         street: "123 Main St",
         city: "New York",
@@ -562,8 +594,10 @@ export const data = {
       _id: 2,
       name: "Jane Smith",
       email: "alan@gmail.com",
+      image: "/images/avatars/hombre.jpg",
       password: "123",
       role: "Customer",
+      phone: "123-456-7890",
       address: {
         street: "456 Elm St",
         city: "Los Angeles",
@@ -575,8 +609,10 @@ export const data = {
       _id: 3,
       name: "Admin",
       email: "admin@example.com",
+      image: "/images/avatars/mujer.jpg",
       password: "admin123",
       role: "Admin",
+      phone: "123-456",
       address: {
         street: "789 Oak St",
         city: "Chicago",
@@ -586,10 +622,12 @@ export const data = {
     },
     {
       _id: 4,
-      name: "Vendedor 1",
+      name: "Carlos Martínez",
       email: "vendedor1@example.com",
+      image: "/images/avatars/hombre.jpg",
       password: "password123",
       role: "Vendedor",
+      phone: "123-5465-6546",
       address: {
         street: "123 Main St",
         city: "New York",
@@ -599,9 +637,11 @@ export const data = {
     },
     {
       _id: 5,
-      name: "Vendedor 2",
+      name: "Ana Rodríguez",
       email: "vendedor2@example.com",
+      image: "/images/avatars/mujer.jpg",
       password: "password123",
+      phone: "456-1234-547",
       role: "Vendedor",
       address: {
         street: "123 Main St",
@@ -612,10 +652,12 @@ export const data = {
     },
     {
       _id: 6,
-      name: "Vendedor 3",
+      name: "Javier Gómez",
       email: "vendedor3@example.com",
       password: "password123",
+      image: "/images/avatars/hombre.jpg",
       role: "Vendedor",
+      phone: "123-7889-1234",
       address: {
         street: "123 Main St",
         city: "New York",
@@ -625,10 +667,12 @@ export const data = {
     },
     {
       _id: 7,
-      name: "Vendedor 4",
+      name: "María Fernández",
       email: "vendedor4@example.com",
+      image: "/images/avatars/mujer.jpg",
       password: "password123",
       role: "Vendedor",
+      phone: "123-1234-5678",
       address: {
         street: "123 Main St",
         city: "New York",
@@ -638,10 +682,12 @@ export const data = {
     },
     {
       _id: 8,
-      name: "Vendedor 5",
+      name: "Sofía López",
       email: "vendedor5@example.com",
       password: "password123",
+      image: "/images/avatars/mujer.jpg",
       role: "Vendedor",
+      phone: "123-9876-5432",
       address: {
         street: "123 Main St",
         city: "New York",
@@ -649,5 +695,6 @@ export const data = {
         zip: "10001",
       },
     },
+    ,
   ],
 };
