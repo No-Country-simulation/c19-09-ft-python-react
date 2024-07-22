@@ -4,11 +4,15 @@ import Image from "next/image";
 import { useState } from "react";
 import { data } from "../../../../public/data";
 
+//toast
+import { toast, Toaster } from "react-hot-toast";
+
 //iconos
 import { MdOutlineShoppingCart } from "react-icons/md";
 import ProductSlider from "../../../components/ProducSlider/ProductSlider";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addItem } from "@/redux/features/cart";
+import Link from "next/link";
 
 const Details = ({ params }) => {
   //dispatch
@@ -22,7 +26,6 @@ const Details = ({ params }) => {
   const productId = parseInt(_id);
   const productos = data.products;
   const product = productos.find((product) => product._id === productId);
-  console.log("product", product);
 
   //Manejar la imagen seleccionada y el hover
   const [selectedImage, setSelectedImage] = useState(product.image[0]);
@@ -62,24 +65,27 @@ const Details = ({ params }) => {
         existingItem &&
         existingItem.quantity + quantity > existingItem.stock
       ) {
-        console.log(
+       toast.success(
           "No hay suficiente stock disponible para agregar más unidades de este producto al carrito."
         );
       } else {
         dispatch(addItem(productData));
-        console.log("Producto agregado al carrito.", productData);
+       toast.success("Producto agregado al carrito.");
       }
     } else {
-      console.log("La cantidad debe ser mayor a 0");
+     toast.success("La cantidad debe ser mayor a 0");
     }
   };
+
+  //buscar vendedor con id
+  const vendedor = data.users.find((vendedor) => vendedor._id === product.idvendedor)
 
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4  mt-16 md:py-20 md:px-20 cursor-pointer">
         <div className="flex flex-col items-start text-start  ">
           <div className="flex flex-col md:flex-row-reverse gap-6 items-center  md:m-4 ">
-            <div className="relative w-[400px] h-[420px] md:mb-4 rounded-md ">
+            <div className="relative w-[500px] h-[420px] md:mb-4 rounded-md ">
               <Image
                 src={hoveredImage || selectedImage}
                 alt="Imagen del producto seleccionada"
@@ -88,7 +94,7 @@ const Details = ({ params }) => {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
               />
             </div>
-            <div className="md:h-full justify-between flex flex-row md:flex-col ">
+            {/* <div className="md:h-full justify-between flex flex-row md:flex-col ">
               {product.image.map((src, index) => (
                 <div
                   key={index}
@@ -106,7 +112,7 @@ const Details = ({ params }) => {
                   />
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
           <div className="flex flex-col items-start text-start py-4 px-8 md:px-4">
             <h2 className="text-xl font-bold ">Descripcion del producto</h2>
@@ -117,6 +123,9 @@ const Details = ({ params }) => {
         {/* Informacion del producto */}
         <div className="flex flex-col items-start text-start py-4 px-8 gap-6">
           <h2 className="text-4xl font-bold ">{product.title}</h2>
+          <Link href={`/Profile/${vendedor?._id}`}>
+          <p className="text-xl ">Perfil del vendedor: <span className="text-secondary font-bold underline ">{vendedor?.name}</span></p>
+          </Link>
           <p className="text-2xl font-bold text-primary">$ {product.price}</p>
           <p className="text-xl font-extralight">{product.category}</p>
           {product.stock > 0 ? (
@@ -144,6 +153,7 @@ const Details = ({ params }) => {
           >
             <MdOutlineShoppingCart size={25} /> Agregar al carrito
           </button>
+          <Toaster position="top-center"/>
         </div>
       </div>
 
