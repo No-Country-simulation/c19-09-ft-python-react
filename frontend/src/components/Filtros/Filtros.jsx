@@ -1,4 +1,5 @@
 import React from "react";
+import { data } from "../../../public/data";
 
 const Filtros = ({
   searchQuery,
@@ -21,10 +22,13 @@ const Filtros = ({
     premium: [20001, Infinity],
   };
 
-  const [minPrice, maxPrice] = priceRanges[priceRange] || priceRanges["todos"];
-
   const uniqueValues = (key) => {
     const values = new Set(filteredProducts.map((product) => product[key]));
+    return ["todos", ...values];
+  };
+
+  const allUniqueValues = (key) => {
+    const values = new Set(data.products.map((product) => product[key]));
     return ["todos", ...values];
   };
 
@@ -66,7 +70,7 @@ const Filtros = ({
           onChange={(e) => setMaterial(e.target.value)}
           className="block w-full p-3 border border-secondary rounded-md shadow-sm focus:ring-2 focus:ring-secondary focus:border-secondary"
         >
-          {uniqueValues("material").map((mat) => (
+          {allUniqueValues("material").map((mat) => (
             <option key={mat} value={mat}>
               {mat.charAt(0).toUpperCase() + mat.slice(1)}
             </option>
@@ -86,7 +90,7 @@ const Filtros = ({
           onChange={(e) => setFinish(e.target.value)}
           className="block w-full p-3 border border-secondary rounded-md shadow-sm focus:ring-2 focus:ring-secondary focus:border-secondary"
         >
-          {uniqueValues("finish").map((fin) => (
+          {allUniqueValues("finish").map((fin) => (
             <option key={fin} value={fin}>
               {fin.charAt(0).toUpperCase() + fin.slice(1)}
             </option>
@@ -106,7 +110,7 @@ const Filtros = ({
           onChange={(e) => setSize(e.target.value)}
           className="block w-full p-3 border border-secondary rounded-md shadow-sm focus:ring-2 focus:ring-secondary focus:border-secondary"
         >
-          {uniqueValues("size").map((siz) => (
+          {allUniqueValues("size").map((siz) => (
             <option key={siz} value={siz}>
               {siz.charAt(0).toUpperCase() + siz.slice(1)}
             </option>
