@@ -1,8 +1,8 @@
 "use client";
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
 const AuthGuard = (WrappedComponent) => {
   return (props) => {
@@ -11,7 +11,7 @@ const AuthGuard = (WrappedComponent) => {
 
     useEffect(() => {
       if (!user) {
-        router.push('/Sign-in');
+        router.push("/Sign-in");
       }
     }, [user, router]);
 

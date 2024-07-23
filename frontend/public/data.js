@@ -592,7 +592,8 @@ export const data = {
     },
     {
       _id: 2,
-      name: "Jane Smith",
+      name: "Jane",
+      lastname: " Smith",
       email: "alan@gmail.com",
       image: "/images/avatars/hombre.jpg",
       password: "123",

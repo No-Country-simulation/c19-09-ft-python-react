@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import countPageReducer from "./features/countPageSlice";
 import cartReducer from "./features/cart";
-import  useReducer from "./features/userSlice";
+import useReducer from "./features/userSlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
 export const store = configureStore({
@@ -10,10 +10,7 @@ export const store = configureStore({
     countPageReducer,
     useReducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat([
-     
-    ]),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([]),
 });
 
 setupListeners(store.dispatch);
