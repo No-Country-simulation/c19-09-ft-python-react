@@ -62,7 +62,7 @@ const PerfilUsuario = () => {
       imageSelect.name && formData.append("name", imageSelect.name);
 
       const respuesta = await axios.post(
-        `https://pf-15a.up.railway.app/api/photos`,
+        https://pf-15a.up.railway.app/api/photos,
         formData,
         {
           headers: {
@@ -73,14 +73,14 @@ const PerfilUsuario = () => {
       console.log("respuesta", respuesta);
       console.log("form Data", formData);
 
-      const imagen = `https://pf-15a.up.railway.app/api/photos/${respuesta.data.id}`;
+      const imagen = https://pf-15a.up.railway.app/api/photos/${respuesta.data.id};
       console.log("imagen id", imagen);
       setUserData({
         ...userData,
         avatar: imagen
       })
       if (imagen) {
-        const response = await axios.put(`https://pf-15a.up.railway.app/api/users/${id}`, {
+        const response = await axios.put(https://pf-15a.up.railway.app/api/users/${id}, {
           name: userData.name,
           lastname: userData.lastname,
           email: userData.email,
@@ -89,7 +89,7 @@ const PerfilUsuario = () => {
         }, {
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorageToken}`
+            'Authorization': Bearer ${localStorageToken}
           }
         });
 
@@ -266,7 +266,6 @@ const PerfilUsuario = () => {
   );
 };
 export default PerfilUsuario; */
-
 import React, { useState, useEffect } from "react";
 import { useAppSelector } from "../../redux/hooks";
 
@@ -296,7 +295,7 @@ const PerfilUsuario = () => {
       setZip(savedData.zip || "");
     } else if (user) {
       setName(user.name);
-      setLastname(user.lastname.trim());
+      setLastname(user.lastname ? user.lastname.trim() : "");
       setEmail(user.email);
       if (user.address) {
         setStreet(user.address.street);
@@ -332,8 +331,6 @@ const PerfilUsuario = () => {
     localStorage.setItem("userProfile", JSON.stringify(profileData));
     setEditable(false);
   };
-
-  console.log("🚀 ~ PerfilUsuario ~ user:", user);
 
   return (
     <div className="min-h-screen flex items-center justify-center mt-[-64px]">
