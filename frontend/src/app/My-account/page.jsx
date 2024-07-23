@@ -7,8 +7,11 @@ import MisFavoritos from "@/Components/MisFavoritos/MisFavoritos";
 import InfoPerfil from "@/Components/InfoPerfil/InfoPerfil";
 import AuthGuard from "@/components/authGuard";
 
+import { useDispatch } from "react-redux";
+
 function Perfil() {
   const [componenteActual, setComponenteActual] = useState("info");
+  const dispatch = useDispatch();
 
   const handleClickEnlace = (componente) => {
     setComponenteActual(componente);
