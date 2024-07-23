@@ -1,21 +1,29 @@
 "use client";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-
-import { useSelector } from "react-redux";
+import { useAppSelector } from '@/redux/hooks';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const AuthGuard = (WrappedComponent) => {
   return (props) => {
     const router = useRouter();
-    const user = useSelector((state) => state.useReducer.user); // Ajusta el selector según tu slice
+    const user = useAppSelector((state) => state.useReducer.user); 
+    const [checkingAuth, setCheckingAuth] = useState(true);
 
     useEffect(() => {
-      if (!user) {
-        router.push("/Sign-in");
-      }
+      const timer = setTimeout(() => {
+        if (!user) {
+          router.push('/Sign-in');
+        }
+        setCheckingAuth(false);
+      }, 1000); 
+      return () => clearTimeout(timer); 
     }, [user, router]);
 
-    // Si el usuario no está autenticado, no renderiza el componente envuelto.
+    if (checkingAuth) {
+      return <p>Verificando autenticación...</p>; 
+    }
+
     if (!user) {
       return null;
     }
