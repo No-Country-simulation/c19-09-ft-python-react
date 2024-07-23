@@ -13,7 +13,7 @@ import Link from "next/link";
 import { useAppSelector } from "@/redux/hooks";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser } from "@/redux/features/userSlice";
+import { getlogindata, logoutUser } from "@/redux/features/userSlice";
 import Buscador from "../Buscador/Buscador";
 // import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
@@ -47,8 +47,8 @@ const Navbar = () => {
   ];
 
   useEffect(() => {
-    setLocalUser(user);
-  }, [user]);
+    dispatch(getlogindata()); 
+  }, [dispatch])
 
   const handleSignOut = () => {
     localStorage.removeItem("user");

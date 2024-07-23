@@ -6,13 +6,25 @@ import MisReseñas from "@/Components/MisReseñas/MisReseñas";
 import MisFavoritos from "@/Components/MisFavoritos/MisFavoritos";
 import InfoPerfil from "@/Components/InfoPerfil/InfoPerfil";
 import AuthGuard from "@/components/authGuard";
+import { useDispatch } from "react-redux";
+import { getlogindata } from "@/redux/features/userSlice";
+import { getCartData } from "@/redux/features/cart";
 
 function Perfil() {
+
+  const dispatch = useDispatch();
+
   const [componenteActual, setComponenteActual] = useState("info");
 
   const handleClickEnlace = (componente) => {
     setComponenteActual(componente);
   };
+
+  useEffect(() => {
+    dispatch(getCartData());
+    dispatch(getlogindata());
+  }, [dispatch]);
+
 
   const renderComponenteActual = () => {
     switch (componenteActual) {
