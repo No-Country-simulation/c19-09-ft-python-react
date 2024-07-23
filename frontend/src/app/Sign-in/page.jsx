@@ -164,8 +164,6 @@ const Register = () => {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("LoginFormData", loginFormData);
-
     if (validateForm()) {
       try {
         const user = dataUser.find(
@@ -174,26 +172,14 @@ const Register = () => {
             user.password === loginFormData.loginPassword
         );
 
-        console.log("user", user);
-
-        if (
-          user.role === "vendedor" ||
-          user.role === "admin" ||
-          user.role === "Customer"
-        ) {
-          // La autenticación y verificación de roles fueron exitosas
+        if (user) {
           setWelcomeMessageLogin(`¡Hola de nuevo ${user.name}!`);
           dispatch(loginUser({ user }));
-          // Redirigir al usuario al Dashboard
           router.push("/My-account");
         } else {
-          // El usuario no tiene el rol necesario
-          toast.error(
-            "Permiso denegado. Solo vendedores y administradores pueden acceder."
-          );
+          toast.error("Correo electrónico o contraseña incorrectos.");
         }
 
-        // Limpia el formulario de inicio de sesión
         setLoginFormData({
           loginEmail: "",
           loginPassword: "",
