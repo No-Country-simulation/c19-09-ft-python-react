@@ -604,6 +604,7 @@ export const data = {
         state: "CA",
         zip: "90001",
       },
+      favorites:[]
     },
     {
       _id: 3,
