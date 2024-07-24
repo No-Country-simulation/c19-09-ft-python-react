@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { data } from "../../../../public/data";
 
 //toast
@@ -9,10 +9,13 @@ import { toast, Toaster } from "react-hot-toast";
 
 //iconos
 import { MdOutlineShoppingCart } from "react-icons/md";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
+
 import ProductSlider from "../../../components/ProducSlider/ProductSlider";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { addItem } from "@/redux/features/cart";
+import { addItem, getCartData } from "@/redux/features/cart";
 import Link from "next/link";
+import { addFavorite, getlogindata, removeFavorite } from "@/redux/features/userSlice";
 
 const Details = ({ params }) => {
   //dispatch
@@ -20,6 +23,9 @@ const Details = ({ params }) => {
 
   //estado del carrito
   const cartItems = useAppSelector((state) => state.cartReducer.cartItems);
+  const user = useAppSelector((state) => state.useReducer.user);
+
+  console.log("user favoritos", user?.favorites);
 
   //traer el id del producto
   const { _id } = params;
@@ -65,20 +71,53 @@ const Details = ({ params }) => {
         existingItem &&
         existingItem.quantity + quantity > existingItem.stock
       ) {
-       toast.success(
+        toast.success(
           "No hay suficiente stock disponible para agregar más unidades de este producto al carrito."
         );
       } else {
         dispatch(addItem(productData));
-       toast.success("Producto agregado al carrito.");
+        toast.success("Producto agregado al carrito.");
       }
     } else {
-     toast.success("La cantidad debe ser mayor a 0");
+      toast.success("La cantidad debe ser mayor a 0");
     }
   };
 
   //buscar vendedor con id
-  const vendedor = data.users.find((vendedor) => vendedor._id === product.idvendedor)
+  const vendedor = data.users.find(
+    (vendedor) => vendedor._id === product.idvendedor
+  );
+
+  //favoritos
+  const [isFavorite, setIsFavorite] = useState(user?.favorites || []);
+
+  useEffect(() => {
+    setIsFavorite(user?.favorites || []);
+  }, [user]);
+
+  useEffect(() => {
+    dispatch(getCartData());
+    dispatch(getlogindata());
+  }, [dispatch]);
+
+  const handleToggleFavorite = () => {
+    if (user) {
+      const productId = product._id; 
+  
+      if (isFavorite.includes(productId)) {
+        dispatch(removeFavorite(productId));
+        setIsFavorite((prevFavorites) => prevFavorites.filter(id => id !== productId));
+        toast.success("Producto eliminado de tus favoritos.");
+      } else {
+        dispatch(addFavorite(productId));
+        setIsFavorite((prevFavorites) => [...prevFavorites, productId]);
+        toast.success("Producto agregado a tus favoritos.");
+      }
+    }
+  };
+  
+
+  
 
   return (
     <>
@@ -123,10 +162,35 @@ const Details = ({ params }) => {
         {/* Informacion del producto */}
         <div className="flex flex-col items-start text-start py-4 px-8 gap-6">
           <h2 className="text-4xl font-bold ">{product.title}</h2>
+          <div className="flex items-center gap-4">
+          
+          {user && (
+            <button
+            onClick={handleToggleFavorite}
+              className={`
+      flex justify-center items-center text-center 
+      transition duration-300 ease-in-out`}
+            >
+              {isFavorite.includes(product._id) ? (
+                <BsHeartFill className="text-2xl text-red-700" />
+              ) : (
+                <BsHeart className="text-2xl text-red-700" />
+              )}
+            </button>
+          )}
+     <p>{product.rating}</p>
+          </div>
+          {/* Icono de corazón para agregar a favoritos */}
+
           <Link href={`/Profile/${vendedor?._id}`}>
-          <p className="text-xl ">Perfil del vendedor: <span className="text-secondary font-bold underline ">{vendedor?.name}</span></p>
+            <p className="text-xl ">
+              Perfil del vendedor: {""}
+               <span className="text-secondary font-bold underline ">
+             {vendedor?.name}
+               </span>
+            </p>
           </Link>
-          <p className="text-2xl font-bold text-primary">$ {product.price}</p>
+          <p className="text-2xl font-bold text-secondary">$ {product.price}</p>
           <p className="text-xl font-extralight">{product.category}</p>
           {product.stock > 0 ? (
             <p className="text-sm font-extralight">
@@ -135,7 +199,7 @@ const Details = ({ params }) => {
           ) : (
             <p className="text-xl font-extralight">❌ sin stock</p>
           )}
-          <p>{product.rating}</p>
+     
           {product.stock > 0 && (
             <input
               type="number"
@@ -153,7 +217,7 @@ const Details = ({ params }) => {
           >
             <MdOutlineShoppingCart size={25} /> Agregar al carrito
           </button>
-          <Toaster position="top-center"/>
+          <Toaster position="top-center" />
         </div>
       </div>
 

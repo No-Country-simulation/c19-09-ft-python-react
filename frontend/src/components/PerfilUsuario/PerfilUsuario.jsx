@@ -268,6 +268,7 @@ const PerfilUsuario = () => {
 export default PerfilUsuario; */
 import React, { useState, useEffect } from "react";
 import { useAppSelector } from "../../redux/hooks";
+import toast, { Toaster } from "react-hot-toast";
 
 const PerfilUsuario = () => {
   const user = useAppSelector((state) => state.useReducer.user);
@@ -330,6 +331,7 @@ const PerfilUsuario = () => {
     };
     localStorage.setItem("userProfile", JSON.stringify(profileData));
     setEditable(false);
+    toast.success("Datos actualizados");
   };
 
   return (
@@ -519,6 +521,7 @@ const PerfilUsuario = () => {
           >
             Guardar
           </button>
+          <Toaster position="top-center" reverseOrder={false} />
         </div>
       </div>
     </div>
