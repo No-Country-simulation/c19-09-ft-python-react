@@ -15,7 +15,7 @@ const Page = () => {
   // const userToken = useAppSelector((state) => state.loginReducer.token);
   const dispatch = useAppDispatch();
 
-  // const [createPurchase] = useNewPurchaseMutation()
+  // const [createPurchase] = useNewPurchaseMutation();
 
   useEffect(() => {
     dispatch(getCartData());
@@ -34,7 +34,6 @@ const Page = () => {
 
   const handleCreateOrder = async () => {
     try {
-      // Asegúrate de que cartItems se haya actualizado antes de realizar la solicitud
       await dispatch(getCartData());
 
       const response = await fetch("/api/Checkout", {
@@ -60,11 +59,9 @@ const Page = () => {
       }
     } catch (error) {
       console.error("Error al procesar la respuesta del backend:", error);
-      // Manejar el error y posiblemente mostrar un mensaje al usuario
     }
   };
 
-  //envio de mail de compras
   const sendEmail = async () => {
     try {
       const response = await fetch("/api/send", {
@@ -90,8 +87,6 @@ const Page = () => {
       );
     }
   };
-
-  //? Purchase History
 
   let cartItemsId = [];
 
@@ -119,6 +114,10 @@ const Page = () => {
     } catch (error) {
       console.error("Error al procesar la respuesta del backend:", error);
     }
+  };
+
+  const saveCartItemsToLocalStorage = (items) => {
+    localStorage.setItem("purchasedItems", JSON.stringify(items));
   };
 
   return (
@@ -231,10 +230,14 @@ const Page = () => {
                           try {
                             const order = await actions.order?.capture();
                             console.log("order: ", order);
+
+                            // Guarda los productos en el local storage
+                            saveCartItemsToLocalStorage(cartItems);
+
                             handlePurchase();
                             dispatch(cleanCart());
                           } catch (error) {
-                            console.log("error onAprove", error);
+                            console.log("error onApprove", error);
                           }
                         }}
                         onCancel={() => {
@@ -251,7 +254,6 @@ const Page = () => {
       </fieldset>
 
       <ToastContainer theme="colored" position="top-center" autoClose={2000} />
-      {/* cierre del div contenedor     */}
     </div>
   );
 };

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import PerfilUsuario from "@/Components/PerfilUsuario/PerfilUsuario";
 import HistorialCompras from "@/Components/HistorialCompras/HistorialCompras";
-import MisReseñas from "@/Components/MisReseñas/MisReseñas";
+
 import MisFavoritos from "@/Components/MisFavoritos/MisFavoritos";
 import InfoPerfil from "@/Components/InfoPerfil/InfoPerfil";
 import AuthGuard from "@/components/authGuard";
@@ -11,7 +11,6 @@ import { getlogindata } from "@/redux/features/userSlice";
 import { getCartData } from "@/redux/features/cart";
 
 function Perfil() {
-
   const dispatch = useDispatch();
 
   const [componenteActual, setComponenteActual] = useState("info");
@@ -25,15 +24,13 @@ function Perfil() {
     dispatch(getlogindata());
   }, [dispatch]);
 
-
   const renderComponenteActual = () => {
     switch (componenteActual) {
       case "informacionPersonal":
         return <PerfilUsuario />;
       case "historialCompras":
         return <HistorialCompras />;
-      case "misReseñas":
-        return <MisReseñas />;
+
       case "favoritos":
         return <MisFavoritos />;
       case "info":
@@ -73,18 +70,7 @@ function Perfil() {
                 Historial de Compras
               </button>
             </li>
-            <li className="m-2">
-              <button
-                className={`cursor-pointer text-xl hover:bg-secondary hover:text-primary text-tertiary font-serif py-2 px-4 rounded-lg w-64 shadow-xl ${
-                  componenteActual === "misReseñas"
-                    ? "bg-secondary text-primary"
-                    : "bg-primary text-tertiary"
-                }`}
-                onClick={() => handleClickEnlace("misReseñas")}
-              >
-                Mis Reseñas
-              </button>
-            </li>
+
             <li className="m-2">
               <button
                 className={`cursor-pointer text-xl hover:bg-secondary hover:text-primary text-tertiary font-serif py-2 px-4 rounded-lg w-64 shadow-xl ${
