@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useAppSelector } from "@/redux/hooks";
 import Buscador from "@/components/Buscador/Buscador";
 import { useState } from "react";
+import Link from "next/link";
 
 const page = () => {
 
@@ -39,7 +40,9 @@ const page = () => {
             <Buscador handleSearch={handleSearch} />
       </div>
       <div className="flex justify-end px-10">
+        <Link href="/Dashboard/Products/Create">
         <button className="bg-blue-500 text-white rounded px-2 py-1 hover:bg-blue-800 focus:outline-none cursor-pointer">Agregar nuevo</button>
+        </Link>
       </div>
       </div>
       <div>
@@ -76,7 +79,11 @@ const page = () => {
                     <td className="p-2 text-center">${item.price}</td>
                     <td className="p-2 text-center">{item.stock}</td>
                     <td className="p-2 text-center">
-                      <button className="bg-blue-500 text-white rounded px-2 py-1 hover:bg-blue-800 focus:outline-none cursor-pointer">Editar</button>
+                      <Link href={`/Dashboard/Products/Edit/${item._id}`}>
+                        <button className="bg-blue-500 text-white rounded px-2 py-1 hover:bg-blue-800 focus:outline-none cursor-pointer">
+                          Editar
+                        </button>
+                      </Link>
                     </td>
                     <td className="p-2 text-center">
                       <button className="bg-red-500 text-white rounded px-2 py-1 hover:bg-red-800 focus:outline-none cursor-pointer">Desabilitar</button>
