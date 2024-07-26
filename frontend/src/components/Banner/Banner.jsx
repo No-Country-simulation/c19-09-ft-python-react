@@ -9,7 +9,7 @@ const Banner = () => {
     const interval = setInterval(() => {
       const nextIndex = (currentImageIndex + 1) % images.length;
       setCurrentImageIndex(nextIndex);
-    }, 3000); // Cambia la imagen cada 3 segundos
+    }, 5000); // Cambia la imagen cada 3 segundos
 
     return () => clearInterval(interval);
   }, [currentImageIndex, images.length]);
