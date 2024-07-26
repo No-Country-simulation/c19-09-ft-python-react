@@ -9,17 +9,19 @@ import { toast, Toaster } from "react-hot-toast";
 import Link from "next/link";
 
 const FavoritesList = () => {
+  const userFavoritos = useAppSelector((state) => state.useReducer.favorites);
   const user = useAppSelector((state) => state.useReducer.user);
   const dispatch = useAppDispatch();
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(userFavoritos);
+
 
   useEffect(() => {
-    if (user) {
-      setFavorites(user.favorites);
+    if (userFavoritos) {
+      setFavorites(favorites);
     }
-  }, [user]);
+  }, [userFavoritos]);
 
-  console.log("favorites", favorites);
+  console.log("favorites", userFavoritos);
 
   const favoriteProducts = data.products.filter((product) =>
     favorites.includes(product._id)

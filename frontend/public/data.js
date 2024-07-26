@@ -589,6 +589,7 @@ export const data = {
         state: "NY",
         zip: "10001",
       },
+      favorites:[]
     },
     {
       _id: 2,
@@ -620,6 +621,7 @@ export const data = {
         state: "IL",
         zip: "60601",
       },
+      favorites:[]
     },
     {
       _id: 4,
@@ -635,6 +637,7 @@ export const data = {
         state: "NY",
         zip: "10001",
       },
+      favorites:[]
     },
     {
       _id: 5,
@@ -650,6 +653,7 @@ export const data = {
         state: "NY",
         zip: "10001",
       },
+      favorites:[]
     },
     {
       _id: 6,
@@ -665,6 +669,7 @@ export const data = {
         state: "NY",
         zip: "10001",
       },
+      favorites:[]
     },
     {
       _id: 7,
@@ -680,6 +685,7 @@ export const data = {
         state: "NY",
         zip: "10001",
       },
+      favorites:[]
     },
     {
       _id: 8,
@@ -695,6 +701,7 @@ export const data = {
         state: "NY",
         zip: "10001",
       },
+      favorites:[]
     },
     ,
   ],

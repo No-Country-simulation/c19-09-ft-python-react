@@ -24,8 +24,9 @@ const Details = ({ params }) => {
   //estado del carrito
   const cartItems = useAppSelector((state) => state.cartReducer.cartItems);
   const user = useAppSelector((state) => state.useReducer.user);
+  const userFavorites = useAppSelector((state) => state.useReducer.favorites);
 
-  console.log("user favoritos", user?.favorites);
+  console.log("user favoritos", userFavorites);
 
   //traer el id del producto
   const { _id } = params;
@@ -92,7 +93,7 @@ const Details = ({ params }) => {
   const [isFavorite, setIsFavorite] = useState(user?.favorites || []);
 
   useEffect(() => {
-    setIsFavorite(user?.favorites || []);
+    setIsFavorite(userFavorites || []);
   }, [user]);
 
   useEffect(() => {

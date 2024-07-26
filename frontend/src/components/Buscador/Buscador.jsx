@@ -4,7 +4,6 @@ const Buscador = ({ handleSearch }) => {
   return (
     <div className="flex justify-center items-center">
       <div className="w-full max-w-md">
-        {/* Limita el ancho del input */}
         <input
           onChange={handleSearch}
           type="search"

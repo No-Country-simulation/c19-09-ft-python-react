@@ -285,7 +285,7 @@ const PerfilUsuario = () => {
 
   // Cargar datos desde localStorage cuando el componente se monte
   useEffect(() => {
-    const savedData = JSON.parse(localStorage.getItem("userProfile"));
+    const savedData = JSON.parse(localStorage.getItem("user"));
     if (savedData) {
       setName(savedData.name || "");
       setLastname(savedData.lastname || "");
