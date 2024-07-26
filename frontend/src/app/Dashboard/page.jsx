@@ -1,16 +1,27 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import { data } from "../../../public/data";
 import { CiViewList } from "react-icons/ci";
 import Link from "next/link";
+import { useAppDispatch } from "@/redux/hooks";
+import { getlogindata } from "@/redux/features/userSlice";
+import { useAppSelector } from "@/redux/hooks";
 
 const Page = () => {
   const cantidad = data.products.length;
   const categorias = data.categories.length;
+  const user = useAppSelector((state) => state.useReducer.user);
+  const dispatch = useAppDispatch();
 
   const itemsCards = [
-    { title: "Total de productos", value: cantidad, icon: CiViewList, color: "bg-red-200", link: "/Dashboard/Products" },
+    { title: "Total de productos", value: cantidad, icon: CiViewList, color: "bg-red-200", link: `/Dashboard/Products` },
     { title: "Total de categorías", value: categorias, icon: CiViewList, color: "bg-green-200", link: "/Dashboard/Categories" },
   ];
+
+  useEffect(() => {
+    dispatch(getlogindata());
+  }, [dispatch]);
+
 
   return (
     <main>

@@ -1,22 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState: {
-    user: {
-      favorites: [],
-    },
+    user: null,
+    favorites: [],
     editingReviewId: null,
-    editedComment: "",
+    editedComment: '',
   },
   reducers: {
     getlogindata: (state) => {
-      if (!state.user) {
-        const userDataString = localStorage.getItem("user");
-        const userData = JSON.parse(userDataString);
-        if (userData) {
-          state.user = userData;
-        }
+      const userDataString = localStorage.getItem('user');
+    
+      if (userDataString) {
+        state.user = JSON.parse(userDataString);
       }
     },
     loginUser: (state, action) => {
@@ -35,13 +32,13 @@ const authSlice = createSlice({
     },
     addFavorite: (state, action) => {
       if (state.user) {
-        state.user.favorites.push(action.payload);
+        state.favorites.push(action.payload);
         localStorage.setItem('user', JSON.stringify(state.user));
       }
     },
     removeFavorite: (state, action) => {
       if (state.user) {
-        state.user.favorites = state.user.favorites.filter(id => id !== action.payload);
+        state.favorites = state.favorites.filter((id) => id !== action.payload);
         localStorage.setItem('user', JSON.stringify(state.user));
       }
     },

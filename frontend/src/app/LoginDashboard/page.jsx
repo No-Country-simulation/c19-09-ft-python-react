@@ -11,6 +11,7 @@ import { toast, Toaster } from "react-hot-toast";
 import { WelcomeMessageLogin } from '@/components/WelcomeMessage/WelcomeMessage';
 import { useRouter } from 'next/navigation'
 import { useDispatch } from 'react-redux';
+import { loginUser } from '@/redux/features/userSlice';
 const envelopeIcon = <FontAwesomeIcon icon={faEnvelope} />;
 const userIcon = <FontAwesomeIcon icon={faUser} />;
 const lockIcon = <FontAwesomeIcon icon={faLock} />;
@@ -162,10 +163,9 @@ const page = () => {
 
               console.log('user', user);
             
-              if (user.role === 'vendedor' || user.role === 'admin') {
-                // La autenticación y verificación de roles fueron exitosas
+              if (user.role === 'Vendedor' || user.role === 'Admin') {
                 setWelcomeMessageLogin(`¡Hola de nuevo ${user.name}!`);
-                // Redirigir al usuario al Dashboard
+                dispatch(loginUser({ user }));
                 router.push('/Dashboard');
               } else {
                 // El usuario no tiene el rol necesario
