@@ -14,8 +14,9 @@ import { useAppSelector } from "@/redux/hooks";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getlogindata, logoutUser } from "@/redux/features/userSlice";
+import Image from "next/image";
 import Buscador from "../Buscador/Buscador";
-// import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import logo from "../../../public/images/ecowood.jpg";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -47,8 +48,8 @@ const Navbar = () => {
   ];
 
   useEffect(() => {
-    dispatch(getlogindata()); 
-  }, [dispatch])
+    dispatch(getlogindata());
+  }, [dispatch]);
 
   const handleSignOut = () => {
     localStorage.removeItem("user");
@@ -74,11 +75,13 @@ const Navbar = () => {
               }`}
             >
               <Link href="/My-account">
-                <p className="text-tertiary">My Account</p>
+                <p className="text-tertiary font-light">My Account</p>{" "}
+                {/* Fuente más fina */}
               </Link>
             </li>
             <li className="cursor-pointer" onClick={handleSignOut}>
-              <p className="text-tertiary">Sign out</p>
+              <p className="text-tertiary font-light">Sign out</p>{" "}
+              {/* Fuente más fina */}
             </li>
           </>
         ) : (
@@ -88,7 +91,8 @@ const Navbar = () => {
             }`}
           >
             <Link href="/Sign-in">
-              <p className="text-tertiary">Sign in</p>
+              <p className="text-tertiary font-light">Sign in</p>{" "}
+              {/* Fuente más fina */}
             </Link>
           </li>
         )}
@@ -112,7 +116,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-8 px-10 bg-primary text-tertiary">
+    <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-8 px-10 bg-primary text-tertiary h-20">
       <ul className="flex items-center gap-7">
         <li
           className={`font-semibold text-lg ${
@@ -121,7 +125,13 @@ const Navbar = () => {
         >
           <Link href="/" legacyBehavior>
             <a className="text-tertiary flex items-center">
-              <FontAwesomeIcon icon={faHome} />
+              <Image
+                src={logo}
+                width={100}
+                height={100}
+                alt="Logo Wood"
+                className="rounded-full"
+              />
             </a>
           </Link>
         </li>
@@ -130,8 +140,8 @@ const Navbar = () => {
             key={category.path}
             className={
               pathname === `/Products/${category.path}`
-                ? "underline text-tertiary"
-                : "text-tertiary"
+                ? "underline text-tertiary font-light" // Fuente más fina
+                : "text-tertiary font-light" // Fuente más fina
             }
           >
             <Link legacyBehavior href={`/Products/${category.path}`}>
