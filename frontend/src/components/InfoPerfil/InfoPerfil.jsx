@@ -2,11 +2,11 @@ import React from "react";
 
 const InfoPerfil = () => {
   return (
-    <div className="min-h-screen mt-10 px-4 sm:px-6 lg:px-12 py-8 bg-primary text-tertiary flex flex-col items-center">
-      <h2 className="text-2xl sm:text-3xl font-semibold mb-8 text-secondary text-center">
+    <div className="min-h-screen  px-4 sm:px-6 lg:px-12 py-8 bg-primary text-tertiary flex flex-col items-center">
+      <h2 className="text-2xl sm:text-3xl font-semibold  text-tertiary text-center">
         ¡Bienvenido a tu Perfil!
       </h2>
-      <p className="text-secondary mb-8 text-center max-w-4xl">
+      <p className="text-tertiary mb-8 text-center max-w-4xl">
         En tu perfil de usuario, puedes realizar diversas acciones para
         personalizar tu experiencia. A continuación, te explicamos algunas de
         las funcionalidades disponibles:
