@@ -6,6 +6,9 @@ import Link from "next/link";
 import { useAppDispatch } from "@/redux/hooks";
 import { getlogindata } from "@/redux/features/userSlice";
 import { useAppSelector } from "@/redux/hooks";
+import { BarChartHero } from "@/components/Dashboard/BarChar";
+import { DonutChartUsageExample } from "@/components/Dashboard/DonutChar";
+import { Card, Metric, Text } from '@tremor/react';
 
 const Page = () => {
   const cantidad = data.products.length;
@@ -43,6 +46,21 @@ const Page = () => {
             </Link>
           );
         })}
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="mt-10">
+        <h3 className="text-xl font-bold underline ">Estadisticas ventas</h3>
+        <Card>
+        <DonutChartUsageExample/>
+        </Card>
+      </div>
+      <div className="mt-10">
+        <h3 className="text-xl font-bold underline ">Distribucion de productos</h3>
+        <Card>
+        <BarChartHero />
+        </Card>
+        
+      </div>
       </div>
     </main>
   );
