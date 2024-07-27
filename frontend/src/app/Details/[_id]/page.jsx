@@ -77,7 +77,7 @@ const Details = ({ params }) => {
         );
       } else {
         dispatch(addItem(productData));
-        toast.success("Producto agregado al carrito.");
+        toast.success(`${product.title} agregado al carrito.`);
       }
     } else {
       toast.success("La cantidad debe ser mayor a 0");
