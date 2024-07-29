@@ -37,7 +37,7 @@ export function DonutChartUsageExample() {
           index="category"
           valueFormatter={valueFormatter}
           colors={['blue', 'cyan', 'indigo', 'violet', 'fuchsia',]}
-          className="w-52 text-dark-tremor-background"
+          className="w-52 "
         />
         <Legend
           categories={['Muebles', 'Utensilios de Cocina', 'Juguetes', 'Puzzles', 'Productos de Cuero']}
