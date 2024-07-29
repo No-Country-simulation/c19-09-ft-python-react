@@ -14,40 +14,16 @@ const page = () => {
 
 
   const vendedorId = parseInt(user?._id);
-  const vendedor = data.users.find((vendedor) => vendedor._id === vendedorId);
-  const products = data.products.filter(
-    (product) => product.idvendedor === vendedorId
-  );
+  const productos = data.products
 
-  console.log("products", products);
-
-  const filteredProducts = products.filter((product) =>
-    product.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  console.log("filteredProducts", filteredProducts);
-
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
-  };
 
 
   return (
     <div className="p-6 items-center">
       <h1 className="text-3xl font-bold">Lista de productos</h1>
-      <div className="mt-10 flex justify-between">
-      <div className="px-10">
-            <Buscador handleSearch={handleSearch} />
-      </div>
-      <div className="flex justify-end px-10">
-        <Link href="/Dashboard/Products/Create">
-        <button className="bg-blue-500 text-white rounded px-2 py-1 hover:bg-blue-800 focus:outline-none cursor-pointer">Agregar nuevo</button>
-        </Link>
-      </div>
-      </div>
       <div>
         <div className="mt-20 px-10">
-          {filteredProducts.length > 0 ? (
+          {productos.length > 0 ? (
             <table className="w-full">
               <thead>
                 <tr className="border-b">
@@ -61,7 +37,7 @@ const page = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredProducts.map((item) => (
+                {productos.map((item) => (
                   <tr key={item._id} className="border-b text-sm">
                     <td className="p-2">
                       <Image
@@ -79,11 +55,10 @@ const page = () => {
                     <td className="p-2 text-center">${item.price}</td>
                     <td className="p-2 text-center">{item.stock}</td>
                     <td className="p-2 text-center">
-                      <Link href={`/Dashboard/Products/Edit/${item._id}`}>
+                     
                         <button className="bg-blue-500 text-white rounded px-2 py-1 hover:bg-blue-800 focus:outline-none cursor-pointer">
-                          Editar
+                          Validar
                         </button>
-                      </Link>
                     </td>
                     <td className="p-2 text-center">
                       <button className="bg-red-500 text-white rounded px-2 py-1 hover:bg-red-800 focus:outline-none cursor-pointer">Desabilitar</button>
@@ -94,7 +69,7 @@ const page = () => {
             </table>
           ) : (
             <p className="text-gray-600">
-              Este vendedor no tiene productos en su catálogo
+              No se encontraron productos para validar
             </p>
           )}
         </div>

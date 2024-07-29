@@ -3,23 +3,26 @@
 import { useAppSelector } from "@/redux/hooks";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CiUser, CiViewList, CiHome } from "react-icons/ci";
+import { CiUser, CiViewList, CiHome} from "react-icons/ci";
+import { IoDocumentOutline } from "react-icons/io5";
 
-const links = [
-  { name: "Home", href: "/Dashboard", icon: CiHome },
-  { name: "Productos", href: `/Dashboard/Products/`, icon: CiViewList },
+const vendedorLinks = [
+  { name: "Inicio", href: "/Dashboard", icon: CiHome },
+  { name: "Productos", href: "/Dashboard/Products", icon: CiViewList },
   { name: "Perfil", href: "/Dashboard/Profile", icon: CiUser },
 ];
 
+const adminLinks = [
+  ...vendedorLinks,
+  { name: "Validar Productos", href: "/Dashboard/Validar-Producto", icon: IoDocumentOutline },
+  { name: "Validar Usuarios", href: "/Dashboard/Validar-Usuario", icon: CiUser },
+];
 
 export default function NavLinks() {
-
   const user = useAppSelector((state) => state.useReducer.user);
-  console.log("User from NavLinks:", user);
-
- 
-
   const pathName = usePathname();
+
+  const links = user?.role === "Admin" ? adminLinks : vendedorLinks;
 
   return (
     <>

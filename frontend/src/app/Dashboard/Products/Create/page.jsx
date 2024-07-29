@@ -93,7 +93,7 @@ const CrearProducto = () => {
               onChange={handleChange}
               className="w-full border rounded p-2 focus:outline-double focus:bg-white focus:border-blue-500"
             >
-              <option value="utencilios">Utencilios</option>
+              <option value="utensilios">Utensilios</option>
               <option value="muebles">Muebles</option>
               <option value="juguetes">Juguetes</option>
               <option value="accesorios">Accesorios</option>
