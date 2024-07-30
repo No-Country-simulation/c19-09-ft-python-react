@@ -45,7 +45,7 @@ const Page = () => {
                         height={150}
                         src={item.image}
                         alt={item.name}
-                        className="object-contain w-20 h-20 mr-4"
+                        className="object-contain w-20 h-20 mr-4 rounded-full"
                       />
                     </td>
                     <td className="p-2 text-center">{item.name}</td>

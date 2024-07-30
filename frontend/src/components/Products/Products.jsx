@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Cards from "../Cards/Cards";
 import Buscador from "../Buscador/Buscador";
 import Filtros from "../Filtros/Filtros";
+import { Toaster } from "react-hot-toast";
 
 const Products = ({ category, data }) => {
   const productos = data.products || [];
@@ -12,6 +13,12 @@ const Products = ({ category, data }) => {
   const [material, setMaterial] = useState("todos");
   const [finish, setFinish] = useState("todos");
   const [size, setSize] = useState("todos");
+
+  const [counterProducts, setCounterProducts] = useState(8);
+
+  const handleLoadMore = () => {
+    setCounterProducts(counterProducts + 4);
+  };
 
   const priceRanges = {
     todos: [0, Infinity],
@@ -40,7 +47,9 @@ const Products = ({ category, data }) => {
       )
       .filter((product) => finish === "todos" || product.finish === finish)
       .filter((product) => size === "todos" || product.size === size);
-  }, [category, data, searchQuery, priceRange, material, finish, size]);
+  }, [category, productos, searchQuery, priceRange, material, finish, size]);
+
+  const slicedProducts = filteredProducts.slice(0, counterProducts);
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4">
@@ -68,7 +77,7 @@ const Products = ({ category, data }) => {
                 <h2 className="text-3xl font-bold mb-4">
                   {category.toUpperCase()}
                 </h2>
-                <Cards products={filteredProducts} />
+                <Cards products={slicedProducts} />
               </>
             ) : (
               <h2 className="text-3xl font-bold mb-4">
@@ -76,8 +85,19 @@ const Products = ({ category, data }) => {
               </h2>
             )}
           </div>
+          {slicedProducts.length < filteredProducts.length && (
+            <div className="flex justify-center">
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                onClick={handleLoadMore}
+              >
+                Cargar más
+              </button>
+            </div>
+          )}
         </div>
       </div>
+      <Toaster />
     </div>
   );
 };
