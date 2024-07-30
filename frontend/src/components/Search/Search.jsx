@@ -124,7 +124,7 @@ const Search = () => {
                   className="flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2"
                 >
                   <div className="p-4 border border-secondary rounded-md shadow-sm hover:scale-105 hover:shadow-2xl transition duration-300 bg-primary">
-                    <h2 className="text-md font-sans font-bold text-center text-secondary">
+                    <h2 className="truncate text-md font-sans font-bold text-center text-secondary">
                       {product.title}
                     </h2>
                     <div className="flex justify-center items-center py-2 px-4">
@@ -136,7 +136,7 @@ const Search = () => {
                         className="object-contain h-48 w-full transition-all duration-200"
                       />
                     </div>
-                    <p className="text-sm text-center font-bold text-black rounded-full">
+                    <p className="truncate text-sm text-center font-bold text-black rounded-full">
                       {product.description}
                     </p>
                     <div className="flex flex-col text-center gap-2 py-2 px-4">
