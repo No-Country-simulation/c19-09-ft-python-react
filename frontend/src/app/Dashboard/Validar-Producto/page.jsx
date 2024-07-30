@@ -1,22 +1,27 @@
 "use client";
 
+import { toast, Toaster } from "react-hot-toast";
 import { data } from "../../../../public/data";
 import Image from "next/image";
 import { useAppSelector } from "@/redux/hooks";
-import Buscador from "@/components/Buscador/Buscador";
 import { useState } from "react";
-import Link from "next/link";
 
-const page = () => {
-
+const Page = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const user = useAppSelector((state) => state.useReducer.user)
-
+  const user = useAppSelector((state) => state.useReducer.user);
+  const [productos, setProductos] = useState(data.products);
 
   const vendedorId = parseInt(user?._id);
-  const productos = data.products
 
+  const handleValidar = (id) => {
+    setProductos(productos.filter((producto) => producto._id !== id));
+    toast.success("Producto Validado");
+  };
 
+  const handleInvalidar = (id) => {
+    setProductos(productos.filter((producto) => producto._id !== id));
+    toast.error("Producto Invalidado");
+  };
 
   return (
     <div className="p-6 items-center">
@@ -55,13 +60,20 @@ const page = () => {
                     <td className="p-2 text-center">${item.price}</td>
                     <td className="p-2 text-center">{item.stock}</td>
                     <td className="p-2 text-center">
-                     
-                        <button className="bg-blue-500 text-white rounded px-2 py-1 hover:bg-blue-800 focus:outline-none cursor-pointer">
-                          Validar
-                        </button>
+                      <button
+                        className="bg-blue-500 text-white rounded px-2 py-1 hover:bg-blue-800 focus:outline-none cursor-pointer"
+                        onClick={() => handleValidar(item._id)}
+                      >
+                        Validar
+                      </button>
                     </td>
                     <td className="p-2 text-center">
-                      <button className="bg-red-500 text-white rounded px-2 py-1 hover:bg-red-800 focus:outline-none cursor-pointer">Desabilitar</button>
+                      <button
+                        className="bg-red-500 text-white rounded px-2 py-1 hover:bg-red-800 focus:outline-none cursor-pointer"
+                        onClick={() => handleInvalidar(item._id)}
+                      >
+                        Deshabilitar
+                      </button>
                     </td>
                   </tr>
                 ))}
@@ -74,8 +86,9 @@ const page = () => {
           )}
         </div>
       </div>
+      <Toaster position="top-center" />
     </div>
   );
 };
 
-export default page;
+export default Page;

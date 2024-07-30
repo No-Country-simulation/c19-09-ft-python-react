@@ -37,7 +37,7 @@ export default function Home() {
     // Aquí podrías redirigir a una página de resultados o filtrar los productos
     console.log("Buscar productos con:", searchQuery);
     // Ejemplo: redirigir a la página de búsqueda
-    window.location.href = `/Search?query=${searchQuery}`;
+    window.location.href = `/SearchPage?query=${searchQuery}`;
   };
 
   return (

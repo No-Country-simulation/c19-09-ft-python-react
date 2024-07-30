@@ -1,12 +1,22 @@
 "use client";
-import { useAppSelector } from '@/redux/hooks';
-import React from 'react';
-import VendedorPage from '@/components/Dashboard/VendedorPage';
-import AdminPage from '@/components/Dashboard/AdminPage';
+
+import React, { useEffect } from "react";
+
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import VendedorPage from "../../components/Dashboard/VendedorPage";
+import AdminPage from "../../components/Dashboard/AdminPage";
+import { getlogindata } from "../../redux/features/userSlice";
 
 const Page = () => {
-  const user = useAppSelector((state) => state.useReducer.user);
+  const user = useSelector((state) => state.useReducer.user);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getlogindata());
+  }, [dispatch]);
+
+  // Decide qué componente renderizar basado en el rol del usuario
   const SelectedPage = user?.role === "Admin" ? AdminPage : VendedorPage;
 
   return (
@@ -14,6 +24,6 @@ const Page = () => {
       <SelectedPage />
     </div>
   );
-}
+};
 
 export default Page;

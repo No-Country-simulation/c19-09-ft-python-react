@@ -1,19 +1,15 @@
 "use client";
 import React, { useState } from "react";
 // componentes
-import {
-  WelcomeMessage,
-  WelcomeMessageLogin,
-} from "../../Components/WelcomeMessage/WelcomeMessage";
 
 import { data } from "../../../public/data";
 
 import { validateRegisterForm, validateLoginForm } from "./formValidation";
 
 // redux
-import { useCreateUserMutation } from "@/redux/services/usersApi";
-import { useLoginUserMutation } from "@/redux/services/usersApi";
-import { loginUser } from "@/redux/features/userSlice";
+import { useCreateUserMutation } from "../../redux/services/usersApi";
+import { useLoginUserMutation } from "../../redux/services/usersApi";
+import { loginUser } from "../../redux/features/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "next-auth/react";
 

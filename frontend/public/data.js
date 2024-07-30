@@ -128,7 +128,7 @@ export const data = {
       rating: 4.9,
       stock: 8,
       description: "Juego de cuchillos de cocina con mangos de madera.",
-      material: "Acero inoxidable y Roble",
+      material: "Roble",
       size: "Grande",
       finish: "Pulido",
       idvendedor: 5,
@@ -337,7 +337,7 @@ export const data = {
       rating: 4.9,
       stock: 10,
       description: "Cuchillo de chef profesional con mango de madera.",
-      material: "Acero inoxidable y Roble",
+      material: "Roble",
       size: "Grande",
       finish: "Pulido",
       idvendedor: 5,
@@ -589,7 +589,7 @@ export const data = {
         state: "NY",
         zip: "10001",
       },
-      favorites:[]
+      favorites: [],
     },
     {
       _id: 2,
@@ -605,7 +605,7 @@ export const data = {
         state: "CA",
         zip: "90001",
       },
-      favorites:[]
+      favorites: [],
     },
     {
       _id: 3,
@@ -621,7 +621,7 @@ export const data = {
         state: "IL",
         zip: "60601",
       },
-      favorites:[]
+      favorites: [],
     },
     {
       _id: 4,
@@ -637,7 +637,7 @@ export const data = {
         state: "NY",
         zip: "10001",
       },
-      favorites:[]
+      favorites: [],
     },
     {
       _id: 5,
@@ -653,7 +653,7 @@ export const data = {
         state: "NY",
         zip: "10001",
       },
-      favorites:[]
+      favorites: [],
     },
     {
       _id: 6,
@@ -669,7 +669,7 @@ export const data = {
         state: "NY",
         zip: "10001",
       },
-      favorites:[]
+      favorites: [],
     },
     {
       _id: 7,
@@ -685,7 +685,7 @@ export const data = {
         state: "NY",
         zip: "10001",
       },
-      favorites:[]
+      favorites: [],
     },
     {
       _id: 8,
@@ -701,7 +701,7 @@ export const data = {
         state: "NY",
         zip: "10001",
       },
-      favorites:[]
+      favorites: [],
     },
     ,
   ],

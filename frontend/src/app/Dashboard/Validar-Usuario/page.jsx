@@ -2,19 +2,22 @@
 
 import { data } from "../../../../public/data";
 import Image from "next/image";
-import { useAppSelector } from "@/redux/hooks";
-import Buscador from "@/components/Buscador/Buscador";
+
 import { useState } from "react";
-import Link from "next/link";
+import { toast, Toaster } from "react-hot-toast";
 
-const page = () => {
+const Page = () => {
+  const [usuarios, setUsuarios] = useState(data.users);
 
-  const [searchQuery, setSearchQuery] = useState("");
-  const user = useAppSelector((state) => state.useReducer.user)
+  const handleValidar = (id) => {
+    setUsuarios(usuarios.filter((user) => user._id !== id));
+    toast.success("Usuario Validado");
+  };
 
-  const usuarios = data.users
-
-
+  const handleInvalidar = (id) => {
+    setUsuarios(usuarios.filter((user) => user._id !== id));
+    toast.error("Usuario Invalidado");
+  };
 
   return (
     <div className="p-6 items-center">
@@ -29,8 +32,8 @@ const page = () => {
                   <th className="text-center p-2">Nombre</th>
                   <th className="text-center p-2">Email</th>
                   <th className="text-center p-2">Rol</th>
-                  <th className="text-center p-2">Telefono</th>
-                  <th className="text-center p-2">Direccion</th>
+                  <th className="text-center p-2">Teléfono</th>
+                  <th className="text-center p-2">Dirección</th>
                 </tr>
               </thead>
               <tbody>
@@ -49,15 +52,22 @@ const page = () => {
                     <td className="p-2 text-center">{item.email}</td>
                     <td className="p-2 text-center">{item.role}</td>
                     <td className="p-2 text-center">{item.phone}</td>
-                    <td className="p-2 text-center">${item.address.city}</td>
+                    <td className="p-2 text-center">{item.address.city}</td>
                     <td className="p-2 text-center">
-                     
-                        <button className="bg-blue-500 text-white rounded px-2 py-1 hover:bg-blue-800 focus:outline-none cursor-pointer">
-                          Validar
-                        </button>
+                      <button
+                        className="bg-blue-500 text-white rounded px-2 py-1 hover:bg-blue-800 focus:outline-none cursor-pointer"
+                        onClick={() => handleValidar(item._id)}
+                      >
+                        Validar
+                      </button>
                     </td>
                     <td className="p-2 text-center">
-                      <button className="bg-red-500 text-white rounded px-2 py-1 hover:bg-red-800 focus:outline-none cursor-pointer">Desabilitar</button>
+                      <button
+                        className="bg-red-500 text-white rounded px-2 py-1 hover:bg-red-800 focus:outline-none cursor-pointer"
+                        onClick={() => handleInvalidar(item._id)}
+                      >
+                        Deshabilitar
+                      </button>
                     </td>
                   </tr>
                 ))}
@@ -69,9 +79,10 @@ const page = () => {
             </p>
           )}
         </div>
+        <Toaster position="top-center" />
       </div>
     </div>
   );
 };
 
-export default page;
+export default Page;

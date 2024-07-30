@@ -1,27 +1,25 @@
-"use client";
-import { useAppSelector } from '@/redux/hooks';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from "@/redux/hooks";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const AuthGuard = (WrappedComponent) => {
-  return (props) => {
+  const AuthGuardComponent = (props) => {
     const router = useRouter();
-    const user = useAppSelector((state) => state.useReducer.user); 
+    const user = useAppSelector((state) => state.useReducer.user);
     const [checkingAuth, setCheckingAuth] = useState(true);
 
     useEffect(() => {
       const timer = setTimeout(() => {
         if (!user) {
-          router.push('/Sign-in');
+          router.push("/Sign-in");
         }
         setCheckingAuth(false);
-      }, 1000); 
-      return () => clearTimeout(timer); 
+      }, 1000);
+      return () => clearTimeout(timer);
     }, [user, router]);
 
     if (checkingAuth) {
-      return <p>Verificando autenticación...</p>; 
+      return <p>Verificando autenticación...</p>;
     }
 
     if (!user) {
@@ -30,6 +28,12 @@ const AuthGuard = (WrappedComponent) => {
 
     return <WrappedComponent {...props} />;
   };
+
+  AuthGuardComponent.displayName = `AuthGuard(${
+    WrappedComponent.displayName || WrappedComponent.name || "Component"
+  })`;
+
+  return AuthGuardComponent;
 };
 
 export default AuthGuard;

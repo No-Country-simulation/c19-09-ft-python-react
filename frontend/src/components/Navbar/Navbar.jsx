@@ -67,6 +67,13 @@ const Navbar = () => {
   const renderView = () => {
     return (
       <>
+        <li>
+          <Link href="/Sobre-nosotros" legacyBehavior>
+            <a className="text-tertiary flex items-center">
+              <span>Sobre nosotros</span>
+            </a>
+          </Link>
+        </li>
         {user ? (
           <>
             <li

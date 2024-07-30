@@ -1,38 +1,38 @@
-import { BarChart } from '@tremor/react';
+import { BarChart } from "@tremor/react";
 
 const chartdata = [
   {
-    category: 'Muebles',
+    category: "Muebles",
     cantidad: 9,
   },
   {
-    category: 'Utensilios',
+    category: "Utensilios",
     cantidad: 8,
   },
   {
-    category: 'Juguetes',
+    category: "Juguetes",
     cantidad: 7,
   },
   {
-    category: 'Puzzles',
+    category: "Puzzles",
     cantidad: 4,
   },
   {
-    category: 'de Cuero',
+    category: "de Cuero",
     cantidad: 2,
   },
 ];
 
 const valueFormatter = (number) => {
-  return `${Intl.NumberFormat('en-US').format(number).toString()}`;
+  return `${Intl.NumberFormat("en-US").format(number).toString()}`;
 };
 
 export const BarChartHero = () => (
   <BarChart
     data={chartdata}
     index="category"
-    categories={['cantidad']}
-    colors={['blue']}
+    categories={["cantidad"]}
+    colors={["blue"]}
     valueFormatter={valueFormatter}
     yAxisWidth={48}
   />

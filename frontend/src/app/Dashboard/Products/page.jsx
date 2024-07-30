@@ -2,48 +2,47 @@
 
 import { data } from "../../../../public/data";
 import Image from "next/image";
-import { useAppSelector } from "@/redux/hooks";
-import Buscador from "@/components/Buscador/Buscador";
+import { useAppSelector } from "../../../redux/hooks";
+import Buscador from "../../../components/Buscador/Buscador";
 import { useState } from "react";
 import Link from "next/link";
 
-const page = () => {
-
+const Page = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const user = useAppSelector((state) => state.useReducer.user)
+  const user = useAppSelector((state) => state.useReducer.user);
 
+  if (!user) {
+    return <p>Cargando usuario...</p>; // O cualquier mensaje de carga/placeholder
+  }
 
-  const vendedorId = parseInt(user?._id);
-  const vendedor = data.users.find((vendedor) => vendedor._id === vendedorId);
+  const vendedorId = parseInt(user._id);
+
   const products = data.products.filter(
     (product) => product.idvendedor === vendedorId
   );
-
-  console.log("products", products);
 
   const filteredProducts = products.filter((product) =>
     product.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  console.log("filteredProducts", filteredProducts);
-
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
   };
-
 
   return (
     <div className="p-6 items-center">
       <h1 className="text-3xl font-bold">Lista de productos</h1>
       <div className="mt-10 flex justify-between">
-      <div className="px-10">
-            <Buscador handleSearch={handleSearch} />
-      </div>
-      <div className="flex justify-end px-10">
-        <Link href="/Dashboard/Products/Create">
-        <button className="bg-blue-500 text-white rounded px-2 py-1 hover:bg-blue-800 focus:outline-none cursor-pointer">Agregar nuevo</button>
-        </Link>
-      </div>
+        <div className="px-10">
+          <Buscador handleSearch={handleSearch} />
+        </div>
+        <div className="flex justify-end px-10">
+          <Link href="/Dashboard/Products/Create">
+            <button className="bg-blue-500 text-white rounded px-2 py-1 hover:bg-blue-800 focus:outline-none cursor-pointer">
+              Agregar nuevo
+            </button>
+          </Link>
+        </div>
       </div>
       <div>
         <div className="mt-20 px-10">
@@ -86,7 +85,9 @@ const page = () => {
                       </Link>
                     </td>
                     <td className="p-2 text-center">
-                      <button className="bg-red-500 text-white rounded px-2 py-1 hover:bg-red-800 focus:outline-none cursor-pointer">Desabilitar</button>
+                      <button className="bg-red-500 text-white rounded px-2 py-1 hover:bg-red-800 focus:outline-none cursor-pointer">
+                        Deshabilitar
+                      </button>
                     </td>
                   </tr>
                 ))}
@@ -103,4 +104,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

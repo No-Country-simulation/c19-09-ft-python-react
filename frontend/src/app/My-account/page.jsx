@@ -1,14 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import PerfilUsuario from "@/Components/PerfilUsuario/PerfilUsuario";
-import HistorialCompras from "@/Components/HistorialCompras/HistorialCompras";
+import PerfilUsuario from "../../components/PerfilUsuario/PerfilUsuario";
+import HistorialCompras from "../../components/HistorialCompras/HistorialCompras";
 
-import MisFavoritos from "@/Components/MisFavoritos/MisFavoritos";
-import InfoPerfil from "@/Components/InfoPerfil/InfoPerfil";
-import AuthGuard from "@/components/authGuard";
+import MisFavoritos from "../../components/MisFavoritos/MisFavoritos";
+import InfoPerfil from "../../components/InfoPerfil/InfoPerfil";
+import AuthGuard from "../../components/authGuard";
 import { useDispatch } from "react-redux";
-import { getlogindata } from "@/redux/features/userSlice";
-import { getCartData } from "@/redux/features/cart";
+import { getlogindata } from "../../redux/features/userSlice";
+import { getCartData } from "../../redux/features/cart";
 
 function Perfil() {
   const dispatch = useDispatch();
