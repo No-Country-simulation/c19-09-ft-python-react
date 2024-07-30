@@ -37,7 +37,7 @@ const ProductSlider = ({ category, topRated }) => {
         }}
       >
         {products.map((product) => (
-          <SwiperSlide key={product._id} className="w-full flex justify-center">
+          <SwiperSlide key={product._id} className="w-full flex justify-center p-4">
             <Card
               _id={product._id}
               image={product.image}
