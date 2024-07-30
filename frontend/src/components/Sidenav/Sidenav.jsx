@@ -3,6 +3,9 @@ import Link from "next/link";
 import { CiPower } from "react-icons/ci";
 import NavLinks from "./NavLinks";
 import Image from "next/image";
+
+import { FaArrowRightFromBracket } from "react-icons/fa6";
+
 import { useSelector, useDispatch } from "react-redux";
 import { useAppSelector } from "../../redux/hooks";
 import { logoutUser } from "../../redux/features/userSlice";
@@ -51,7 +54,10 @@ export default function SideNav() {
       </Link>
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
         <NavLinks />
-        <div className="hidden h-auto w-full grow rounded-md bg-gray-50 md:block"></div>
+        <div className="hidden h-auto w-full grow rounded-md bg-gray-50 md:block">
+
+
+        </div>
         {user && user.image ? (
           <div className="flex  p-3 md:p-2 md:px-3">
             <Image
@@ -66,6 +72,13 @@ export default function SideNav() {
           <div className="w-12 h-12 bg-gray-300 rounded-full" />
         )}
 
+        <Link href="/">
+        <button className="flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
+       <FaArrowRightFromBracket className="w-6"/>
+         <span className="hidden md:block">Ir a la tienda</span> 
+        </button>
+        </Link>
+
         <button
           onClick={handleLogout}
           type="submit"
@@ -73,7 +86,7 @@ export default function SideNav() {
           aria-label="Sign Out"
         >
           <CiPower className="w-6" />
-          <div className="hidden md:block">Sign Out</div>
+          <div className="hidden md:block">Cerrar sesión</div>
         </button>
       </div>
     </div>
