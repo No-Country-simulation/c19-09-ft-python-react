@@ -39,7 +39,8 @@ const AdminPage = () => {
 
   return (
     <main>
-      <h1 className="text-3xl font-bold mb-10">Dashboard</h1>
+      <Card>
+      <h1 className="text-3xl font-bold font-serif mb-10 text-white">Dashboard</h1>
       <div className="grid grid-cols-1  gap-4">
         <div>
           <Card>
@@ -64,6 +65,7 @@ const AdminPage = () => {
           </Card>
         </div>
       </div>
+      </Card>
     </main>
   );
 };

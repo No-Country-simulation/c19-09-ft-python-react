@@ -59,7 +59,8 @@ const VendedorPage = () => {
 
   return (
     <main>
-      <h1 className="text-3xl underline mb-10">Dashboard</h1>
+      <Card>
+      <h1 className="text-3xl font-serif mb-10 text-white">Dashboard</h1>
       <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {itemsCards.map((item, index) => {
           const LinkIcon = item.icon;
@@ -80,6 +81,7 @@ const VendedorPage = () => {
           );
         })}
       </div>
+     
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="mt-10">
           <Card className="mt-4">
@@ -96,6 +98,7 @@ const VendedorPage = () => {
           </Card>
         </div>
       </div>
+      </Card>
     </main>
   );
 };
