@@ -131,7 +131,7 @@ export const data = {
       material: "Roble",
       size: "Grande",
       finish: "Pulido",
-      idvendedor: 5,
+      idvendedor: 3,
     },
     {
       _id: 8,
@@ -150,7 +150,7 @@ export const data = {
       material: "Arce",
       size: "Grande",
       finish: "Barnizado",
-      idvendedor: 7,
+      idvendedor: 3,
     },
     {
       _id: 9,
@@ -169,7 +169,7 @@ export const data = {
       material: "Pino",
       size: "Mediana",
       finish: "Aceitado",
-      idvendedor: 6,
+      idvendedor: 3,
     },
     {
       _id: 10,
@@ -207,7 +207,7 @@ export const data = {
       material: "Fresno",
       size: "Grande",
       finish: "Barnizado",
-      idvendedor: 4,
+      idvendedor: 3,
     },
     {
       _id: 12,
@@ -226,7 +226,7 @@ export const data = {
       material: "Teca",
       size: "Mediano",
       finish: "Lacado",
-      idvendedor: 1,
+      idvendedor: 3,
     },
     {
       _id: 13,
@@ -340,7 +340,7 @@ export const data = {
       material: "Roble",
       size: "Grande",
       finish: "Pulido",
-      idvendedor: 5,
+      idvendedor: 3,
     },
     {
       _id: 19,
@@ -397,7 +397,7 @@ export const data = {
       material: "Cuero",
       size: "Mediana",
       finish: "Natural",
-      idvendedor: 8,
+      idvendedor: 3,
     },
     {
       _id: 22,
@@ -416,7 +416,7 @@ export const data = {
       material: "Cuero",
       size: "Grande",
       finish: "Pulido",
-      idvendedor: 8,
+      idvendedor: 3,
     },
     {
       _id: 23,
@@ -435,7 +435,7 @@ export const data = {
       material: "Cuero",
       size: "Grande",
       finish: "Natural",
-      idvendedor: 5,
+      idvendedor: 3,
     },
     {
       _id: 24,
