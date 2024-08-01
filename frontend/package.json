@@ -13,8 +13,14 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@headlessui/react": "^2.1.2",
+    "@headlessui/tailwindcss": "^0.2.1",
+    "@heroicons/react": "^2.1.5",
     "@material-tailwind/react": "^2.1.9",
+    "@paypal/react-paypal-js": "^8.5.0",
     "@reduxjs/toolkit": "^2.2.6",
+    "@remixicon/react": "^4.2.0",
+    "@tremor/react": "^3.17.4",
     "axios": "^1.7.2",
     "next": "14.2.5",
     "next-auth": "^4.24.7",
@@ -28,6 +34,7 @@
     "swiper": "^11.1.4"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
     "postcss": "^8",

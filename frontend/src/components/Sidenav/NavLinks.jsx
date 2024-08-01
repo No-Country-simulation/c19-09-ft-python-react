@@ -1,26 +1,28 @@
 "use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useAppSelector } from "@/redux/hooks";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { CiUser, CiViewList, CiHome} from "react-icons/ci";
+import { IoDocumentOutline } from "react-icons/io5";
 
-//icons
-import { CiUser, CiViewList, CiHome  } from "react-icons/ci";
+const vendedorLinks = [
+  { name: "Inicio", href: "/Dashboard", icon: CiHome },
+  { name: "Productos", href: "/Dashboard/Products", icon: CiViewList },
+  { name: "Perfil", href: "/Dashboard/Profile", icon: CiUser },
+];
 
-// Map of links to display in the side navigation.
-// Depending on the size of the application, this would be stored in a database.
-const links = [
-  { name: 'Home', href: '/Dashboard', icon: CiHome },
-  {
-    name: 'Productos',
-    href: '/Dashboard/Products',
-    icon: CiViewList,
-  },
-  { name: 'Perfil', href: '/Dashboard/Profile', icon: CiUser },
+const adminLinks = [
+  ...vendedorLinks,
+  { name: "Validar Productos", href: "/Dashboard/Validar-Producto", icon: IoDocumentOutline },
+  { name: "Validar Usuarios", href: "/Dashboard/Validar-Usuario", icon: CiUser },
 ];
 
 export default function NavLinks() {
+  const user = useAppSelector((state) => state.useReducer.user);
+  const pathName = usePathname();
 
-const pathName = usePathname();
+  const links = user?.role === "Admin" ? adminLinks : vendedorLinks;
 
   return (
     <>
@@ -30,9 +32,14 @@ const pathName = usePathname();
           <Link
             key={link.name}
             href={link.href}
-            className={`flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3
-              ${pathName === link.href ? 'bg-sky-100 text-blue-600' : ''}
+            className={`flex h-[48px] items-center gap-2 rounded-md p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3
+              ${
+                pathName === link.href
+                  ? "bg-sky-100 text-blue-600"
+                  : "bg-gray-50 text-gray-800"
+              }
             `}
+            aria-label={link.name}
           >
             <LinkIcon className="w-6" />
             <p className="hidden md:block">{link.name}</p>
